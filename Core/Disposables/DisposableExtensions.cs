@@ -33,7 +33,7 @@ namespace DogmaMix.Core.Extensions
         /// in conjunction with exceptions thrown by the main logic of the <paramref name="action"/> delegate.
         /// </para>
         /// <para>
-        /// The standard behaviour of the <see langword="using"/> keyword causes any exceptions from the main logic
+        /// The standard behavior of the <see langword="using"/> keyword causes any exceptions from the main logic
         /// to be hidden and lost if an exception is also thrown from <see cref="IDisposable.Dispose"/>.
         /// According to Sections 8.9.5 and 8.10 of the C# Language Specification (version 5.0):
         /// </para>
@@ -80,10 +80,10 @@ namespace DogmaMix.Core.Extensions
         /// </blockquote>
         /// <para>
         /// This extension method aims to provide a conclusive resolution to this issue by implementing the various plausible strategies,
-        /// including the standard behaviour, and leaving it up to the caller to decide which to use.
+        /// including the standard behavior, and leaving it up to the caller to decide which to use.
         /// </para>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/q/577607/1149773">Should you implement IDisposable.Dispose() so that it never throws?</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/q/35602760/1149773">Delegate-parameterized method vs IDisposable implementation"</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/q/1654487/1149773">Swallowing exception thrown in catch/finally block"</see>, <i>Stack Overflow</i></item>

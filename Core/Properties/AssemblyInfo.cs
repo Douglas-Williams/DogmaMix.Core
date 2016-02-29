@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DogmaMix.Core")]
-[assembly: AssemblyDescription("Provides general-purpose functionality, utility classes, and extension methods that build on the .NET Framework Class Library")]
+[assembly: AssemblyDescription("Provides additional general-purpose functionality, utility classes, and extension methods that build on the .NET Framework Class Library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DogmaMix.Core")]

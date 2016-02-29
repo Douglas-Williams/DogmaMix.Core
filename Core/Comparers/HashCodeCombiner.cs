@@ -58,7 +58,7 @@ namespace DogmaMix.Core.Comparers
         /// (see <see href="http://referencesource.microsoft.com/#mscorlib/system/array.cs,807">source</see>).
         /// </para>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://eternallyconfuzzled.com/tuts/algorithms/jsw_tut_hashing.aspx#fnv">Hashing</see> by Eternally Confuzzled</item>
         /// <item><see href="http://stackoverflow.com/a/468084/1149773">How do I generate a hashcode from a byte array in C#?</see> (answer), <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/a/7244729/1149773">GetHashCode() on byte[] array</see> (answer) by Jon Skeet, <i>Stack Overflow</i></item>

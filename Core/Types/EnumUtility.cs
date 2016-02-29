@@ -25,7 +25,7 @@ namespace DogmaMix.Core.Types
         /// This utility method serves as a strongly typed wrapper over the <see cref="Enum.GetValues"/> method
         /// of the <see cref="Enum"/> class in the .NET Framework Class Library.
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/q/1398664/1149773">Enum.GetValues() Return Type</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>

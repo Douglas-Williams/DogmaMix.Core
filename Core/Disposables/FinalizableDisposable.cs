@@ -36,7 +36,7 @@ namespace DogmaMix.Core.Disposables
     /// Therefore, we recommend that you construct <see cref="SafeHandle"/> objects instead of implementing a finalizer.
     /// </blockquote>
     /// <list type="bullet">
-    /// <listheader>See Also</listheader>
+    /// <listheader>References</listheader>
     /// <item><see href="https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx">Dispose Pattern</see>, <i>MSDN Library</i></item>
     /// <item><see href="https://msdn.microsoft.com/en-us/library/fs2xkftw(v=vs.110).aspx">Implementing a Dispose Method</see>, <i>MSDN Library</i></item>
     /// </list>

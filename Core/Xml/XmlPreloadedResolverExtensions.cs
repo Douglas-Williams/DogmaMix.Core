@@ -46,7 +46,7 @@ namespace DogmaMix.Core.Extensions
         /// on the W3C website.
         /// </para>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="https://en.wikipedia.org/wiki/XML_Catalog">XML Catalog</see>, <i>Wikipedia</i></item>
         /// <item><see href="http://stackoverflow.com/q/1645767/1149773">How do I resolve entities when loading into an XDocument?"</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/q/3733255/1149773">How to speed up loading DTD through DOCTYPE</see>, <i>Stack Overflow</i></item>
@@ -94,16 +94,16 @@ namespace DogmaMix.Core.Extensions
         /// <para>
         /// The <see cref="XmlPreloadedResolver.Add(Uri, byte[])"/> method of the <see cref="XmlPreloadedResolver"/> class
         /// always overrides the existing mapping for <paramref name="uri"/> if it is already defined in the store. 
-        /// This behaviour is not always desirable, as the caller might consider preloaded mappings in the store –
+        /// This behavior is not always desirable, as the caller might consider preloaded mappings in the store –
         /// if present – to be more authoritative than their supplied ones.
-        /// This extension method allows callers to customize this behaviour through the <paramref name="override"/> parameter.
+        /// This extension method allows callers to customize this behavior through the <paramref name="override"/> parameter.
         /// </para>
         /// <para>
         /// If the <paramref name="override"/> parameter is specified as <see langword="false"/>,
         /// this method would call the <see cref="Enumerable.Contains{TSource}(IEnumerable{TSource}, TSource)"/> extension method
         /// on the <see cref="XmlPreloadedResolver.PreloadedUris"/> sequence of the <paramref name="resolver"/> to determine
         /// whether the store already contains <paramref name="uri"/>.
-        /// The said extension method interally checks whether the type of the sequence implements <see cref="ICollection{T}"/>;
+        /// The said extension method internally checks whether the type of the sequence implements <see cref="ICollection{T}"/>;
         /// if so, the <see cref="ICollection{T}.Contains"/> method in that implementation is invoked to obtain the result.
         /// Otherwise, the elements are compared to the specified value using the default equality comparer,
         /// <see cref="EqualityComparer{T}.Default"/>.
@@ -122,7 +122,7 @@ namespace DogmaMix.Core.Extensions
         /// However, if the internal implementation of the <see cref="XmlPreloadedResolver"/> class is changed,
         /// in future or alternative versions of the .NET Framework, such that the sequence returned by 
         /// <see cref="XmlPreloadedResolver.PreloadedUris"/> no longer implements <see cref="ICollection{T}"/> this way,
-        /// then URI comparisons would no longer honour custom <see cref="IEqualityComparer{Uri}"/> instances.
+        /// then URI comparisons would no longer honor custom <see cref="IEqualityComparer{Uri}"/> instances.
         /// In such cases, one should no longer rely on the <paramref name="override"/> parameter, but perform the check externally,
         /// using the same <see cref="IEqualityComparer{Uri}"/> instance that was used to initialize <paramref name="resolver"/>
         /// to compare <paramref name="uri"/> against the <see cref="XmlPreloadedResolver.PreloadedUris"/> sequence.

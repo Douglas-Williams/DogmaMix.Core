@@ -192,8 +192,15 @@ namespace DogmaMix.Core.Extensions
         /// <see href="https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx#comparison">string comparison</see>.
         /// Thus, normalization (to any form) would not give results that are consistent with <see cref="StringComparison.CurrentCulture"/> comparisons.
         /// </para>
+        /// <para>
+        /// Yet another alternative involves iterating over the strings as a sequence of <i>text elements</i>, 
+        /// rather than UTF-16 code units, using the <see cref="StringInfo.GetNextTextElement(string, int)"/> method,
+        /// as presented in <see href="http://stackoverflow.com/a/22513015/1149773">this Stack Overflow answer</see>.
+        /// Results would be similar to those obtained from Unicode normalization: canonical mappings are honored,
+        /// but compatibility mappings are not.
+        /// </para>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/q/35485677/1149773">Get substring from string using culture-sensitive comparison</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/q/20480016/1149773">Length of substring matched by culture-sensitive String.IndexOf method</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/q/15980310/1149773">How can I perform a culture-sensitive “starts-with” operation from the middle of a string?</see> by Jon Skeet, <i>Stack Overflow</i></item>
@@ -324,7 +331,7 @@ namespace DogmaMix.Core.Extensions
         /// Refer to the remarks on the <see cref="RemovePrefix"/> method regarding culture-sensitive comparisons.
         /// </para>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/a/4101583/1149773">C# removing strings from end of string</see> (answer), <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>

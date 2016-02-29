@@ -25,11 +25,11 @@ namespace DogmaMix.Core.Extensions
         /// </returns>
         /// <remarks>
         /// <para>
-        /// This extension method is modelled after the <see cref="StreamReader.ReadToEnd"/> method of the <see cref="StreamReader"/> class,
+        /// This extension method is modeled after the <see cref="StreamReader.ReadToEnd"/> method of the <see cref="StreamReader"/> class,
         /// but reads byte sequences instead of strings.
         /// </para>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/q/221925/1149773">How to convert an Stream into a byte[] in C#?</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/q/1080442/1149773">Creating a byte array from a stream</see>, <i>Stack Overflow</i></item>
         /// </list>

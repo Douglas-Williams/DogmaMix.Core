@@ -19,7 +19,7 @@ namespace DogmaMix.Core.Extensions
         /// <remarks>
         /// <para>
         /// This extension method is similar to the <see cref="Task.Wait()"/> method on the <see cref="Task"/> class.
-        /// However, this method reproduces the behaviour of the <see langword="await"/> by rethrowing any unhandled exceptions,
+        /// However, this method reproduces the behavior of the <see langword="await"/> keyword by rethrowing any unhandled exceptions,
         /// rather than wrapping them into an <see cref="AggregateException"/> like <see cref="Task.Wait()"/> does.
         /// If the task contains multiple exceptions (such as from a <see cref="Task.WhenAll(Task[])"/> call), only one is rethrown.
         /// </para>
@@ -29,6 +29,8 @@ namespace DogmaMix.Core.Extensions
         /// </remarks>
         public static void GetResult(this Task task)
         {
+            ArgumentValidate.NotNull(task, nameof(task));
+
             task.GetAwaiter().GetResult();
         }
 
@@ -42,7 +44,7 @@ namespace DogmaMix.Core.Extensions
         /// <remarks>
         /// <para>
         /// This extension method is similar to the <see cref="Task{TResult}.Result"/> property on the <see cref="Task{TResult}"/> class.
-        /// However, this method reproduces the behaviour of the <see langword="await"/> by rethrowing any unhandled exceptions,
+        /// However, this method reproduces the behavior of the <see langword="await"/> keyword by rethrowing any unhandled exceptions,
         /// rather than wrapping them into an <see cref="AggregateException"/> like <see cref="Task{TResult}.Result"/> does.
         /// If the task contains multiple exceptions (such as from a <see cref="Task.WhenAll(Task[])"/> call), only one is rethrown.
         /// </para>
@@ -62,7 +64,7 @@ namespace DogmaMix.Core.Extensions
         /// will wrap any exceptions inside an <see cref="AggregateException"/>.
         /// </blockquote>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/q/17284517/1149773">Is Task.Result the same as .GetAwaiter.GetResult()?</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://blog.stephencleary.com/2014/12/a-tour-of-task-part-6-results.html">A Tour of Task, Part 6: Results</see> by Stephen Cleary</item>
         /// <item><see href="https://github.com/aspnet/Security/issues/59">Replace any Task.Result calls with Task.GetAwaiter().GetResult()</see></item>

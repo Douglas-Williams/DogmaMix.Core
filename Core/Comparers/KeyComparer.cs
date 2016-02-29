@@ -37,7 +37,7 @@ namespace DogmaMix.Core.Comparers
     /// <see cref="string.Equals(string)"/>, which performs an ordinal comparison.
     /// Using the two default comparers together can lead to anomalies:
     /// <c>Comparer&lt;string&gt;.Default.Compare("café", "cafe\u0301")</c> evaluates to <c>0</c>, indicating equality, whilst
-    /// <c>EqualityComparer&lt;string&gt;.Default.Equals("café", "cafe\u0301")</c> evalutes to <see langword="false"/>, indicating inequality.
+    /// <c>EqualityComparer&lt;string&gt;.Default.Equals("café", "cafe\u0301")</c> evaluates to <see langword="false"/>, indicating inequality.
     /// It would be undesirable to encapsulate such inconsistent comparers within the same class.
     /// MSDN implicitly acknowledges the issue under the remarks for <see cref="Comparer{T}.Default"/>,
     /// recommending the <see cref="StringComparer"/> class instead:
@@ -49,7 +49,7 @@ namespace DogmaMix.Core.Comparers
     /// </blockquote>
     /// </para>
     /// <list type="bullet">
-    /// <listheader>See Also</listheader>
+    /// <listheader>References</listheader>
     /// <item><see href="http://stackoverflow.com/a/21550837/1149773">Can I use Linq to create a comparer for a C# sorted dictionary</see> (answer), <i>Stack Overflow</i></item>
     /// </list>
     /// </remarks>

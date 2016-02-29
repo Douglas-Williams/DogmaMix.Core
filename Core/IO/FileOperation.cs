@@ -19,7 +19,7 @@ namespace DogmaMix.Core.IO
         /// <param name="path">The path and name of the empty file to create.</param>
         /// <remarks>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/q/802541/1149773">Creating an empty file in C#</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>

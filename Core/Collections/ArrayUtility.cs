@@ -17,7 +17,7 @@ namespace DogmaMix.Core.Collections
         /// </summary>
         /// <remarks>
         /// <para>
-        /// This readonly property caches an empty array of type <typeparamref name="T"/>.
+        /// This read-only property caches an empty array of type <typeparamref name="T"/>.
         /// Since an empty array is immutable, the same instance can be returned to all callers,
         /// avoiding unnecessary memory allocation (and the performance penalty that this carries).
         /// </para>

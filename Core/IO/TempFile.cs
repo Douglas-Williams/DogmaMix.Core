@@ -60,12 +60,12 @@ namespace DogmaMix.Core.IO
     /// When <see cref="IDisposable.Dispose()"/> is called implicitly at the end of a <see langword="using"/> block,
     /// or explicitly within a <see langword="finally"/> block, such exceptions may cause other exceptions 
     /// thrown from the main block of the statement to be hidden and lost.
-    /// If this behaviour is not desirable, consider using the 
+    /// If this behavior is not desirable, consider using the 
     /// <see cref="DisposableExtensions.Using{TDisposable}(TDisposable, DisposeExceptionStrategy, Action{TDisposable})"/>
     /// extension method, or one its overloads, with the appropriate <see cref="DisposeExceptionStrategy"/> option.
     /// </para>
     /// <list type="bullet">
-    /// <listheader>See Also</listheader>
+    /// <listheader>References</listheader>
     /// <item><see href="http://stackoverflow.com/q/400140/1149773">How do I automatically delete tempfiles in c#?</see>, <i>Stack Overflow</i></item>
     /// <item><see href="http://stackoverflow.com/q/1519429/1149773">Handling with temporary file stream</see>, <i>Stack Overflow</i></item>
     /// <item><see href="http://stackoverflow.com/q/35602760/1149773">Delegate-parameterized method vs IDisposable implementation for temporary file operation</see>, <i>Stack Overflow</i></item>

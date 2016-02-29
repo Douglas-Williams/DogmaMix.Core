@@ -60,7 +60,7 @@ namespace DogmaMix.Core.Comparers
     /// discussed under the remarks of the <see cref="KeyComparer{TSource, TKey}"/> class.
     /// </para>
     /// <list type="bullet">
-    /// <listheader>See Also</listheader>
+    /// <listheader>References</listheader>
     /// <item><see href="http://stackoverflow.com/a/20802693/1149773">How to compare arrays in a list</see> (answer), <i>Stack Overflow</i></item>
     /// </list>
     /// </remarks>

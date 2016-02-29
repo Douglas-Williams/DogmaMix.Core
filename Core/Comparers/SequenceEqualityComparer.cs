@@ -88,7 +88,7 @@ namespace DogmaMix.Core.Comparers
         /// <returns><see langword="true"/> if the sequences are equal; otherwise, <see langword="false"/>.</returns>
         /// <remarks>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/q/713341/1149773">Comparing arrays in C#</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>

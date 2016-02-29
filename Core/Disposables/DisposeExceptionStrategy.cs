@@ -21,7 +21,7 @@ namespace DogmaMix.Core.Disposables
         /// <summary>
         /// Propagates any exceptions thrown by the <see cref="IDisposable.Dispose"/> method.
         /// If another exception was already thrown by the main logic, it will be hidden and lost.
-        /// This behaviour is consistent with the standard semantics of the <see langword="using"/> keyword.
+        /// This behavior is consistent with the standard semantics of the <see langword="using"/> keyword.
         /// </summary>
         /// <remarks>
         /// <para>
@@ -72,7 +72,7 @@ namespace DogmaMix.Core.Disposables
         /// into an <see cref="AggregateException"/>, even if just one exception occurred.
         /// </summary>
         /// <remarks>
-        /// This strategy is similar to behaviour of the <see cref="Task.Wait()"/> method of the <see cref="Task"/> class 
+        /// This strategy is similar to behavior of the <see cref="Task.Wait()"/> method of the <see cref="Task"/> class 
         /// and the <see cref="Task{TResult}.Result"/> property of the <see cref="Task{TResult}"/> class:
         /// <blockquote>
         /// Even if only one exception is thrown, it is still wrapped in an <see cref="AggregateException"/> exception.

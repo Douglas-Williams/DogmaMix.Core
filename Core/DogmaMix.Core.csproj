@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\DogmaMix.Core.XML</DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -77,8 +78,8 @@
     <Compile Include="Randomization\RandomExtensions.cs" />
     <Compile Include="Randomization\CachedRandom.cs" />
     <Compile Include="Globalization\CultureSwapper.cs" />
-    <Compile Include="Linq\EnumerableUtility.cs" />
-    <Compile Include="Linq\EnumerableExtensions.cs" />
+    <Compile Include="Collections\EnumerableUtility.cs" />
+    <Compile Include="Collections\EnumerableExtensions.cs" />
     <Compile Include="Comparers\HashCodeCombiner.cs" />
     <Compile Include="Strings\HexadecimalConvert.cs" />
     <Compile Include="Comparers\KeyEqualityComparer.cs" />

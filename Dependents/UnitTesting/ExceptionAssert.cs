@@ -123,7 +123,7 @@ namespace DogmaMix.Core.UnitTesting
         /// Refer to the remarks on the said overload for the general functionality of these methods.
         /// </para>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="https://msdn.microsoft.com/en-us/magazine/dn818493.aspx#code-snippet-8">Async Programming : Unit Testing Asynchronous Code</see> by Stephen Cleary</item>
         /// </list>
         /// </remarks>
@@ -145,7 +145,7 @@ namespace DogmaMix.Core.UnitTesting
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
 
             return ThrowsAsyncInner<TException>(asyncAction,
-                $"Expected exception of type \"{typeof(TException).Name}\", but no expection was thrown. {message}",
+                $"Expected exception of type \"{typeof(TException).Name}\", but no exception was thrown. {message}",
                 t => $"Expected exception of type \"{typeof(TException).Name}\", but \"{t.Name}\" was thrown instead. {message}");
         }
 

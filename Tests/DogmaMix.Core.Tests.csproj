@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Collections\EnumerableUtilityTests.cs" />
     <Compile Include="Delegates\AsyncFuncExtensionsTests.cs" />
     <Compile Include="Delegates\AsyncActionExtensionsTests.cs" />
     <Compile Include="Delegates\FuncExtensionsTests.cs" />
@@ -77,7 +78,7 @@
       <DependentUpon>StreamExtensionsTests.Auto.tt</DependentUpon>
     </Compile>
     <Compile Include="IO\StreamExtensionsTests.cs" />
-    <Compile Include="Linq\EnumerableExtensionsTests.cs" />
+    <Compile Include="Collections\EnumerableExtensionsTests.cs" />
     <Compile Include="Strings\HexadecimalConvertTests.cs" />
     <Compile Include="Comparers\SequenceEqualityComparerTests.cs" />
     <Compile Include="Comparers\KeyEqualityComparerTests.cs" />

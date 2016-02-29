@@ -25,7 +25,7 @@ namespace DogmaMix.Core.Extensions
         /// <returns>The IP address of the client.</returns>
         /// <remarks>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/a/93437/1149773">Obtaining client IP address in WCF</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>

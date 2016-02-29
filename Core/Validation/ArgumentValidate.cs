@@ -17,7 +17,7 @@ namespace DogmaMix.Core
     /// (see links below).
     /// </para>
     /// <list type="bullet">
-    /// <listheader>See Also</listheader>
+    /// <listheader>References</listheader>
     /// <item><see href="https://msdn.microsoft.com/en-us/library/dn986596.aspx">nameof</see>, <i>MSDN Library</i></item>
     /// <item><see href="http://stackoverflow.com/q/11063502/1149773">Getting names of local variables (and parameters) at run-time through lambda expressions</see>, <i>Stack Overflow</i></item>
     /// <item><see href="http://stackoverflow.com/q/10759632/1149773">Lambda expressions for refactor-safe ArgumentException</see>, <i>Stack Overflow</i></item>
@@ -40,7 +40,7 @@ namespace DogmaMix.Core
         /// and the result is simply defined to be <see langword="false"/> when <c>T</c> is a value type.
         /// </blockquote>
         /// <list type="bullet">
-        /// <listheader>See Also</listheader>
+        /// <listheader>References</listheader>
         /// <item><see href="http://stackoverflow.com/a/8824259/1149773">Comparing a generic against null that could be a value or reference type?</see> (answer) by Eric Lippert, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>

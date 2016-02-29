@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -50,7 +51,7 @@ namespace DogmaMix.Core.Disposables
     /// in which case a finalizer becomes unnecessary because the wrapper is responsible for its own resource cleanup.
     /// </blockquote>
     /// <list type="bullet">
-    /// <listheader>See Also</listheader>
+    /// <listheader>References</listheader>
     /// <item><see href="https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx">Dispose Pattern</see>, <i>MSDN Library</i></item>
     /// <item><see href="https://msdn.microsoft.com/en-us/library/fs2xkftw(v=vs.110).aspx">Implementing a Dispose Method</see>, <i>MSDN Library</i></item>
     /// <item><see href="https://coding.abel.nu/2012/01/disposable/">Disposable Base Class</see> by Anders Abel</item>
@@ -96,8 +97,9 @@ namespace DogmaMix.Core.Disposables
         #region Methods
 
         /// <summary>
-        /// Releases all managed and unmanaged resources resources used by the current object.
+        /// Releases all managed and unmanaged resources used by the current object.
         /// </summary>
+        [SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly")]
         public void Dispose()
         {
             if (HasDisposeCompleted)
