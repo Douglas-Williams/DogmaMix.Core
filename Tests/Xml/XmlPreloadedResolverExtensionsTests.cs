@@ -96,7 +96,7 @@ namespace DogmaMix.Core.Extensions.Tests
             var resourceA = new byte[] { 43, 59 };
             var resourceB = new byte[] { 217, 24, 64 };
 
-            var uriComparer = new KeyEqualityComparer<Uri, string>(uri => uri.Host);
+            var uriComparer = KeyEqualityComparer.Create((Uri uri) => uri.Host);
             var xmlResolver = new XmlPreloadedResolver(null, XmlKnownDtds.None, uriComparer);
 
             xmlResolver.Add(uriA, resourceA);

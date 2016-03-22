@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DogmaMix.Core.Collections;
 using DogmaMix.Core.Randomization;
 using DogmaMix.Core.UnitTesting;
 
@@ -92,6 +93,44 @@ namespace DogmaMix.Core.Extensions.Tests
 
             var sequence = bytes.Where(b => b > 127);
             EnumerableAssert.AreEqual(sequence, sequence.AsArray());
+        }
+        
+        [TestMethod]
+        public void TryFastCountTest()
+        {
+            int count;
+
+            Assert.IsTrue(new[] { 'a', 'b', 'c' }.TryFastCount(out count));
+            Assert.AreEqual(3, count);
+
+            Assert.IsTrue("qwerty".TryFastCount(out count));
+            Assert.AreEqual(6, count);
+
+            Assert.IsTrue(new List<Version>().TryFastCount(out count));
+            Assert.AreEqual(0, count);
+
+            Assert.IsFalse(EnumerableUtility.Yield(3, 5, 9).TryFastCount(out count));
+            Assert.AreEqual(-1, count);
+
+            Assert.IsFalse(EnumerateFail<int>().TryFastCount(out count));
+            Assert.AreEqual(-1, count);
+        }
+
+        [TestMethod]
+        public void FastCountTest()
+        {
+            Assert.AreEqual(3, new[] { 'a', 'b', 'c' }.FastCount());
+            Assert.AreEqual(6, "qwerty".FastCount());
+            Assert.AreEqual(0, new List<Version>().FastCount());
+
+            Assert.AreEqual(null, EnumerableUtility.Yield(3, 5, 9).FastCount());
+            Assert.AreEqual(null, EnumerateFail<int>().FastCount());
+        }
+
+        private IEnumerable<T> EnumerateFail<T>()
+        {
+            Assert.Fail("The sequence was enumerated.");
+            yield break;   // never reached
         }
     }
 }

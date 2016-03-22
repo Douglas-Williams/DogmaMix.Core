@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DogmaMix.Core.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DogmaMix.Core.Globalization;
 
 namespace DogmaMix.Core.Comparers.Tests
 {

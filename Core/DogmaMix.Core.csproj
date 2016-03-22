@@ -43,6 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\EnumeratorUtility.cs" />
+    <Compile Include="Comparers\EqualityComparerBase.cs" />
+    <Compile Include="Comparers\ComparerBase.cs" />
+    <Compile Include="Comparers\KeyComparer`2.cs" />
+    <Compile Include="Comparers\KeyEqualityComparer`2.cs" />
+    <Compile Include="Comparers\ReferenceEqualityComparer.cs" />
+    <Compile Include="Comparers\SequenceComparer`1.cs" />
+    <Compile Include="Comparers\SequenceComparison.cs" />
+    <Compile Include="Comparers\SequenceEqualityComparer`1.cs" />
     <Compile Include="Delegates\AsyncFuncExtensions.cs">
       <DependentUpon>AsyncFuncExtensions.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -58,6 +67,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Validation\ArgumentValidate.cs" />
     <Compile Include="Collections\ArrayUtility.cs" />
     <Compile Include="Delegates\ActionExtensions.cs">
@@ -129,6 +139,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ManifestResources.cs</LastGenOutput>
     </Content>
+    <Content Include="Xml\Xhtml5Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Xhtml5Entities.dtd</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Xml\xhtml11-flat.dtd">
       <LogicalName>xhtml11-flat.dtd</LogicalName>
     </EmbeddedResource>
@@ -136,7 +150,14 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Xml\Xhtml5Entities.dtd">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Xhtml5Entities.tt</DependentUpon>
+      <LogicalName>Xhtml5Entities.dtd</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

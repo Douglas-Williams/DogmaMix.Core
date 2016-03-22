@@ -47,7 +47,7 @@ namespace DogmaMix.Core.UnitTesting
             if (sequence.Any())
                 throw new AssertFailedException($"The sequence was expected to be empty, but actually contains {sequence.Count()} element(s). {message}");
         }
-
+        
         /// <summary>
         /// Verifies that the specified sequence contains the specified number of elements.
         /// </summary>

@@ -24,11 +24,11 @@ namespace DogmaMix.Core.Comparers.Tests
         {
             using (new CultureSwapper(PredefinedCulture.EnglishUnitedStates))
             {
-                var comparer = new SequenceEqualityComparer<string>(StringComparer.CurrentCulture);
+                var comparer = SequenceEqualityComparer.Create(StringComparer.CurrentCulture);
                 EqualityAssert.NotEquals(x, y, comparer);
                 EqualityAssert.NotEquals(y, z, comparer);
 
-                comparer = new SequenceEqualityComparer<string>(StringComparer.CurrentCultureIgnoreCase);
+                comparer = SequenceEqualityComparer.Create(StringComparer.CurrentCultureIgnoreCase);
                 EqualityAssert.NotEquals(x, y, comparer);
                 EqualityAssert.Equals(y, z, comparer);
             }
@@ -67,7 +67,7 @@ namespace DogmaMix.Core.Comparers.Tests
         {
             using (new CultureSwapper(PredefinedCulture.EnglishUnitedStates))
             {
-                var comparer = new SequenceEqualityComparer<string>(StringComparer.CurrentCultureIgnoreCase);
+                var comparer = SequenceEqualityComparer.Create(StringComparer.CurrentCultureIgnoreCase);
                 Assert.AreEqual(
                     comparer.GetHashCode(y),
                     comparer.GetHashCode(z));

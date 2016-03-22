@@ -16,16 +16,19 @@ using DogmaMix.Core.Extensions;
 namespace DogmaMix.Core
 {
     /// <summary>
-    /// Provides properties and methods for retrieving manifest resources (also known as embedded resources) from the current assembly.
-    /// These properties and methods provide compile-time checking and IntelliSense for the manifest resource names,
-    /// which is preferable over the standard approach of supplying hardcoded strings to the 
-    /// <see cref="Assembly.GetManifestResourceStream(string)"/> method.
+    /// Provides properties and methods for retrieving manifest resources 
+    /// (also known as embedded resources) from the current assembly.
+    /// These properties and methods provide compile-time checking and IntelliSense for the
+    /// manifest resource names, which is preferable over the standard approach of supplying
+    /// hardcoded strings to the <see cref="Assembly.GetManifestResourceStream(string)"/> method.
     /// </summary>
     /// <remarks>
     /// <para>
-    /// MSBuild has an internal set of rules for constructing resource names, involving escaped representations 
-    /// of the project default namespace, resource relative directory path, and resource filename. 
-    /// The template that generated this class introduces &lt;LogicalName&gt; elements in the project file to simplify this naming.
+    /// MSBuild has an internal set of rules for constructing resource names, involving escaped 
+    /// representations of the project default namespace, resource relative directory path, and 
+    /// resource filename. Rather than reverse-engineer these naming rules,
+    /// the template that generated this class introduces &lt;LogicalName&gt; elements in the 
+    /// project file to substitute simpler explicit names instead.
     /// </para>
     /// <list type="bullet">
     /// <listheader>References</listheader>
@@ -42,15 +45,46 @@ namespace DogmaMix.Core
         /// The manifest resource.
         /// The caller is responsible for disposing of this stream when done with it.
         /// </returns>
-        public static Stream Getxhtml11_flat_dtd() => GetManifestResourceStream(@"xhtml11-flat.dtd");
-
-        private static readonly Lazy<byte[]> _xhtml11_flat_dtd = new Lazy<byte[]>(() =>
-            GetManifestResourceBytes(@"xhtml11-flat.dtd"));
-        
+        public static Stream GetXhtml11FlatDtd() => GetManifestResourceStream(@"xhtml11-flat.dtd");
+                
         /// <summary>
-        /// Gets the cached byte array for the manifest resource "xhtml11-flat.dtd" from this assembly.
+        /// Gets a byte array for the manifest resource "xhtml11-flat.dtd" from this assembly.
         /// </summary>
-        public static byte[] xhtml11_flat_dtd => _xhtml11_flat_dtd.Value;
+        /// <remarks>
+        /// <para>
+        /// If the resource represents a text document, then its byte array might start with a
+        /// <see href="https://en.wikipedia.org/wiki/Byte_order_mark">byte order mark</see> (BOM).
+        /// To acquire a <see cref="string"/> representation of a text resource, read the 
+        /// <see cref="Stream"/> returned by the <see cref="GetXhtml11FlatDtd()"/> 
+        /// method using a <see cref="StreamReader"/> instead, which automatically removes the BOM.
+        /// </para>
+        /// </remarks>
+        public static byte[] Xhtml11FlatDtdBytes =>
+            GetManifestResourceBytes(@"xhtml11-flat.dtd");
+
+        /// <summary>
+        /// Loads the manifest resource "Xhtml5Entities.dtd" from this assembly.
+        /// </summary>
+        /// <returns>
+        /// The manifest resource.
+        /// The caller is responsible for disposing of this stream when done with it.
+        /// </returns>
+        public static Stream GetXhtml5EntitiesDtd() => GetManifestResourceStream(@"Xhtml5Entities.dtd");
+                
+        /// <summary>
+        /// Gets a byte array for the manifest resource "Xhtml5Entities.dtd" from this assembly.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// If the resource represents a text document, then its byte array might start with a
+        /// <see href="https://en.wikipedia.org/wiki/Byte_order_mark">byte order mark</see> (BOM).
+        /// To acquire a <see cref="string"/> representation of a text resource, read the 
+        /// <see cref="Stream"/> returned by the <see cref="GetXhtml5EntitiesDtd()"/> 
+        /// method using a <see cref="StreamReader"/> instead, which automatically removes the BOM.
+        /// </para>
+        /// </remarks>
+        public static byte[] Xhtml5EntitiesDtdBytes =>
+            GetManifestResourceBytes(@"Xhtml5Entities.dtd");
 
         private static Stream GetManifestResourceStream(string resourceName)
         {

@@ -38,9 +38,13 @@ namespace DogmaMix.Core.Comparers
         /// </summary>
         /// <typeparam name="T">The type of the items whose hash codes to combine.</typeparam>
         /// <param name="items">The items whose hash codes to combine.</param>
-        /// <param name="comparer">The comparer for computing each item's hash code.</param>
+        /// <param name="comparer">
+        /// The comparer for computing each item's hash code,
+        /// or <see langword="null"/> to use the <see cref="EqualityComparer{T}.Default"/> comparer
+        /// for type <typeparamref name="T"/>.
+        /// </param>
         /// <returns>The combined hash code.</returns>
-        /// <exception cref="ArgumentNullException"><paramref name="items"/> or <paramref name="comparer"/> is <see langword="null"/>.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="items"/> is <see langword="null"/>.</exception>
         /// <remarks>
         /// <para>
         /// This method uses the <see href="http://www.isthe.com/chongo/tech/comp/fnv/index.html#FNV-1a">FNV-1a alternate algorithm</see> 
@@ -67,7 +71,9 @@ namespace DogmaMix.Core.Comparers
         public static int Combine<T>(IEnumerable<T> items, IEqualityComparer<T> comparer)
         {
             ArgumentValidate.NotNull(items, nameof(items));
-            ArgumentValidate.NotNull(comparer, nameof(comparer));
+
+            if (comparer == null)
+                comparer = EqualityComparer<T>.Default;
 
             return Combine(items.Select(comparer.GetHashCode));
         }

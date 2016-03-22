@@ -118,6 +118,7 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
+        /// <item><see href="http://stackoverflow.com/q/21033150/1149773">Any difference between “await Task.Run(); return;” and “return Task.Run()”?</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/q/21661511/1149773">Contract agreement when implementing a method that returns a Task</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/q/21055920/1149773">Handling exceptions from the synchronous part of async method</see>, <i>Stack Overflow</i></item>
         /// <item><see href="http://stackoverflow.com/q/35633615/1149773">Convert asynchronous action to asynchronous function delegate preserving synchronous exception delivery</see>, <i>Stack Overflow</i></item>

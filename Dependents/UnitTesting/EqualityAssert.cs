@@ -21,7 +21,8 @@ namespace DogmaMix.Core.UnitTesting
         /// <param name="y">The second object to compare.</param>
         /// <param name="comparer">
         /// The equality comparer to use for comparing the two objects,
-        /// or <see langword="null"/> to use the <see cref="EqualityComparer{T}.Default"/> comparer for type <typeparamref name="T"/>.
+        /// or <see langword="null"/> to use the <see cref="EqualityComparer{T}.Default"/> comparer
+        /// for type <typeparamref name="T"/>.
         /// </param>
         /// <param name="message">A message to display if the assertion fails. This message can be seen in the unit test results.</param>
         public static void Equals<T>(T x, T y, IEqualityComparer<T> comparer = null, string message = null)
@@ -56,7 +57,8 @@ namespace DogmaMix.Core.UnitTesting
         /// <param name="y">The second object to compare.</param>
         /// <param name="comparer">
         /// The equality comparer to use for comparing the two objects,
-        /// or <see langword="null"/> to use the <see cref="EqualityComparer{T}.Default"/> comparer for type <typeparamref name="T"/>.
+        /// or <see langword="null"/> to use the <see cref="EqualityComparer{T}.Default"/> comparer 
+        /// for type <typeparamref name="T"/>.
         /// </param>
         /// <param name="message">A message to display if the assertion fails. This message can be seen in the unit test results.</param>
         public static void NotEquals<T>(T x, T y, IEqualityComparer<T> comparer = null, string message = null)

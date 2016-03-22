@@ -21,7 +21,8 @@ namespace DogmaMix.Core.UnitTesting
         /// <param name="y">The object that should be the greater of the two.</param>
         /// <param name="comparer">
         /// The comparer to use for comparing the two objects,
-        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer for type <typeparamref name="T"/>.
+        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer
+        /// for type <typeparamref name="T"/>.
         /// </param>
         /// <param name="message">A message to display if the assertion fails. This message can be seen in the unit test results.</param>
         public static void IsLessThan<T>(T x, T y, IComparer<T> comparer = null, string message = null)
@@ -38,7 +39,8 @@ namespace DogmaMix.Core.UnitTesting
         /// <param name="y">The object that should be the greater of the two, unless both are equal.</param>
         /// <param name="comparer">
         /// The comparer to use for comparing the two objects,
-        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer for type <typeparamref name="T"/>.
+        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer 
+        /// for type <typeparamref name="T"/>.
         /// </param>
         /// <param name="message">A message to display if the assertion fails. This message can be seen in the unit test results.</param>
         public static void IsLessThanOrEqualTo<T>(T x, T y, IComparer<T> comparer = null, string message = null)
@@ -55,7 +57,8 @@ namespace DogmaMix.Core.UnitTesting
         /// <param name="y">The object that should be the lesser of the two.</param>
         /// <param name="comparer">
         /// The comparer to use for comparing the two objects,
-        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer for type <typeparamref name="T"/>.
+        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer 
+        /// for type <typeparamref name="T"/>.
         /// </param>
         /// <param name="message">A message to display if the assertion fails. This message can be seen in the unit test results.</param>
         public static void IsGreaterThan<T>(T x, T y, IComparer<T> comparer = null, string message = null)
@@ -72,7 +75,8 @@ namespace DogmaMix.Core.UnitTesting
         /// <param name="y">The object that should be the lesser of the two, unless both are equal.</param>
         /// <param name="comparer">
         /// The comparer to use for comparing the two objects,
-        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer for type <typeparamref name="T"/>.
+        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer
+        /// for type <typeparamref name="T"/>.
         /// </param>
         /// <param name="message">A message to display if the assertion fails. This message can be seen in the unit test results.</param>
         public static void IsGreaterThanOrEqualTo<T>(T x, T y, IComparer<T> comparer = null, string message = null)
@@ -89,7 +93,8 @@ namespace DogmaMix.Core.UnitTesting
         /// <param name="y">The second object to compare.</param>
         /// <param name="comparer">
         /// The comparer to use for comparing the two objects,
-        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer for type <typeparamref name="T"/>.
+        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer 
+        /// for type <typeparamref name="T"/>.
         /// </param>
         /// <param name="message">A message to display if the assertion fails. This message can be seen in the unit test results.</param>
         /// <remarks>
@@ -111,7 +116,8 @@ namespace DogmaMix.Core.UnitTesting
         /// <param name="y">The second object to compare.</param>
         /// <param name="comparer">
         /// The comparer to use for comparing the two objects,
-        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer for type <typeparamref name="T"/>.
+        /// or <see langword="null"/> to use the <see cref="Comparer{T}.Default"/> comparer 
+        /// for type <typeparamref name="T"/>.
         /// </param>
         /// <param name="message">A message to display if the assertion fails. This message can be seen in the unit test results.</param>
         /// <remarks>

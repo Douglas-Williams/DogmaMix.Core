@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,19 +43,25 @@ namespace DogmaMix.Core.Extensions
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The sequence that contains the elements to search through.</param>
         /// <param name="value">The value to search for.</param>
-        /// <param name="comparer">An <see cref="IEqualityComparer{T}"/> to compare values.</param>
+        /// <param name="comparer">
+        /// An <see cref="IEqualityComparer{T}"/> to compare values,
+        /// or <see langword="null"/> to use the <see cref="EqualityComparer{T}.Default"/> comparer
+        /// for type <typeparamref name="TSource"/>.
+        /// </param>
         /// <returns>
         /// The zero-based index position of the first occurrence of an element in <paramref name="source"/>
         /// that is equal to <paramref name="value"/>, if found; 
         /// or -1 if <paramref name="source"/> is empty or no match is found.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="source"/> or <paramref name="comparer"/> is <see langword="null"/>.
+        /// <paramref name="source"/> is <see langword="null"/>.
         /// </exception>
         public static int IndexOf<TSource>(this IEnumerable<TSource> source, TSource value, IEqualityComparer<TSource> comparer)
         {
             ArgumentValidate.NotNull(source, nameof(source));
-            ArgumentValidate.NotNull(comparer, nameof(comparer));
+
+            if (comparer == null)
+                comparer = EqualityComparer<TSource>.Default;
 
             return source.IndexOf(element => comparer.Equals(element, value));
         }
@@ -126,14 +133,18 @@ namespace DogmaMix.Core.Extensions
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <param name="source">The sequence that contains the elements to search through.</param>
         /// <param name="value">The value to search for.</param>
-        /// <param name="comparer">An <see cref="IEqualityComparer{T}"/> to compare values.</param>
+        /// <param name="comparer">
+        /// An <see cref="IEqualityComparer{T}"/> to compare values,
+        /// or <see langword="null"/> to use the <see cref="EqualityComparer{T}.Default"/> comparer
+        /// for type <typeparamref name="TSource"/>.
+        /// </param>
         /// <returns>
         /// The sequence of zero-based index positions of elements in <paramref name="source"/>
         /// that are equal to <paramref name="value"/>.
         /// If <paramref name="source"/> is empty or no match is found, an empty sequence is returned.
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="source"/> or <paramref name="comparer"/> is <see langword="null"/>.
+        /// <paramref name="source"/> is <see langword="null"/>.
         /// </exception>
         /// <remarks>
         /// This method is implemented by using deferred execution. For more details, 
@@ -142,7 +153,9 @@ namespace DogmaMix.Core.Extensions
         public static IEnumerable<int> IndexesOf<TSource>(this IEnumerable<TSource> source, TSource value, IEqualityComparer<TSource> comparer)
         {
             ArgumentValidate.NotNull(source, nameof(source));
-            ArgumentValidate.NotNull(comparer, nameof(comparer));
+
+            if (comparer == null)
+                comparer = EqualityComparer<TSource>.Default;
 
             return source.IndexesOf(element => comparer.Equals(element, value));
         }
@@ -266,7 +279,7 @@ namespace DogmaMix.Core.Extensions
             foreach (TSource item in source)
                 yield return item;
         }
-        
+
         /// <summary>
         /// Returns the specified sequence as an array.
         /// If <paramref name="source"/> can be cast as an array, it is returned unchanged;
@@ -289,6 +302,99 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(source, nameof(source));
 
             return source as TSource[] ?? source.ToArray();
+        }
+
+        /// <summary>
+        /// Determines the number of elements in a sequence without enumerating it, if possible.
+        /// A return value indicates whether the number could be determined.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">A sequence that contains elements to be counted.</param>
+        /// <param name="count">
+        /// When this method returns, contains the number of elements in the input sequence,
+        /// or <c>-1</c> if the number could not be determined without enumerating the sequence.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/> if the number of elements could be determined without enumerating the sequence;
+        /// otherwise, <see langword="false"/>.
+        /// </returns>
+        /// <remarks>
+        /// <para>
+        /// This method is similar to the <see cref="Enumerable.Count{TSource}(IEnumerable{TSource})"/> 
+        /// extension method. However, this method will refrain from enumerating the sequence if the
+        /// number of elements could not be determined immediately (typically in O(1) time).
+        /// This allows it to be used for optimizing operations over sequences that can take shortcuts
+        /// when the lengths are known, but would otherwise need to measure the lengths as part
+        /// of the same enumeration performed by the operation itself.
+        /// Such an optimization could, for example, be used to improve the performance of the
+        /// <see cref="Enumerable.SequenceEqual{TSource}(IEnumerable{TSource}, IEnumerable{TSource})"/>
+        /// extension method.
+        /// </para>
+        /// <list type="bullet">
+        /// <listheader>References</listheader>
+        /// <item><see href="http://www.codeducky.org/engineering-a-collection-equality-function/#fast-count">Fast Counting</see> by Mike Adelson</item>
+        /// <item><see href="https://resharper-support.jetbrains.com/hc/en-us/community/posts/206034539#community_comment_206470879">TryFastCount&lt;T&gt;</see> by Richard Deeming</item>
+        /// </list>
+        /// </remarks>
+        public static bool TryFastCount<TSource>(this IEnumerable<TSource> source, out int count)
+        {
+            ArgumentValidate.NotNull(source, nameof(source));
+
+            var collection = source as ICollection<TSource>;
+            if (collection != null)
+            {
+                count = collection.Count();
+                return true;
+            }
+            
+            var collectionNonGeneric = source as ICollection;
+            if (collectionNonGeneric != null)
+            {
+                count = collectionNonGeneric.Count;
+                return true;
+            }
+
+            var readOnlyCollection = source as IReadOnlyCollection<TSource>;
+            if (readOnlyCollection != null)
+            {
+                count = readOnlyCollection.Count;
+                return true;
+            }
+
+            var str = source as string;
+            if (str != null)
+            {
+                count = str.Length;
+                return true;
+            }
+
+            count = -1;
+            return false;
+        }
+
+        /// <summary>
+        /// Determines the number of elements in a sequence without enumerating it, if possible;
+        /// or returns <see langword="null"/> if not.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <param name="source">A sequence that contains elements to be counted.</param>
+        /// <returns>
+        /// The number of elements in the input sequence, if such could be counted without enumerating the sequence;
+        /// otherwise, <see langword="null"/>.
+        /// </returns>
+        /// <remarks>
+        /// Refer to the remarks on the <see cref="TryFastCount{TSource}(IEnumerable{TSource}, out int)"/>
+        /// extension method, which this method internally calls.
+        /// </remarks>
+        public static int? FastCount<TSource>(this IEnumerable<TSource> source)
+        {
+            ArgumentValidate.NotNull(source, nameof(source));
+
+            int count;
+            if (source.TryFastCount(out count))
+                return count;
+
+            return null;
         }
     }
 }

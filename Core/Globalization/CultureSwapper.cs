@@ -14,7 +14,7 @@ namespace DogmaMix.Core.Globalization
     /// </summary>
     public class CultureSwapper : Disposable
     {
-        private CultureInfo formerCulture;
+        private readonly CultureInfo formerCulture;
 
         /// <summary>
         /// Sets the culture used by the current thread to the <paramref name="culture"/> instance,

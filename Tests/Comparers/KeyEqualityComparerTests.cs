@@ -30,19 +30,19 @@ namespace DogmaMix.Core.Comparers.Tests
         {
             using (new CultureSwapper(PredefinedCulture.EnglishUnitedStates))
             {
-                var comparer = new KeyEqualityComparer<City, string>(city => city.Name);
+                var comparer = KeyEqualityComparer.Create((City city) => city.Name);
                 EqualityAssert.Equals(añasco, añasco, comparer);
                 EqualityAssert.NotEquals(añasco, añascoUppercase, comparer);
                 EqualityAssert.NotEquals(añasco, añascoCombining, comparer,
                     "Precomposed character should not equal combining character sequence for default equality comparison (ordinal).");
 
-                comparer = new KeyEqualityComparer<City, string>(city => city.Name, StringComparer.CurrentCulture);
+                comparer = KeyEqualityComparer.Create((City city) => city.Name, StringComparer.CurrentCulture);
                 EqualityAssert.Equals(añasco, añasco, comparer);
                 EqualityAssert.NotEquals(añasco, añascoUppercase, comparer);
                 EqualityAssert.Equals(añasco, añascoCombining, comparer,
                     "Precomposed character should equal combining character sequence for culture-sensitive comparison (en-US).");
 
-                comparer = new KeyEqualityComparer<City, string>(city => city.Name, StringComparer.CurrentCultureIgnoreCase);
+                comparer = KeyEqualityComparer.Create((City city) => city.Name, StringComparer.CurrentCultureIgnoreCase);
                 EqualityAssert.Equals(añasco, añasco, comparer);
                 EqualityAssert.Equals(añasco, añascoUppercase, comparer);
                 EqualityAssert.Equals(añasco, añascoCombining, comparer);
@@ -52,7 +52,7 @@ namespace DogmaMix.Core.Comparers.Tests
         [TestMethod]
         public void Equals_Nulls()
         {
-            var comparer = new KeyEqualityComparer<City, string>(city => city.Name);
+            var comparer = KeyEqualityComparer.Create((City city) => city.Name);
             EqualityAssert.NotEquals(null, athens, comparer);
             EqualityAssert.Equals(null, null, comparer);
             EqualityAssert.NotEquals(athens, null, comparer);
@@ -63,7 +63,7 @@ namespace DogmaMix.Core.Comparers.Tests
         {
             using (new CultureSwapper(PredefinedCulture.EnglishUnitedStates))
             {
-                var comparer = new KeyEqualityComparer<City, string>(city => city.Name, StringComparer.CurrentCultureIgnoreCase);
+                var comparer = KeyEqualityComparer.Create((City city) => city.Name, StringComparer.CurrentCultureIgnoreCase);
                 var añascoHash = comparer.GetHashCode(añasco);
                 Assert.AreEqual(añascoHash, comparer.GetHashCode(añascoUppercase));
                 Assert.AreEqual(añascoHash, comparer.GetHashCode(añascoCombining));

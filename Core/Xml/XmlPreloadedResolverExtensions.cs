@@ -70,8 +70,8 @@ namespace DogmaMix.Core.Extensions
         {
             ArgumentValidate.NotNull(resolver, nameof(resolver));
 
-            Add(resolver, new Uri(Xhtml11.DtdPublicId, UriKind.RelativeOrAbsolute), ManifestResources.xhtml11_flat_dtd, @override);
-            Add(resolver, new Uri(Xhtml11.DtdSystemId, UriKind.RelativeOrAbsolute), ManifestResources.xhtml11_flat_dtd, @override);
+            Add(resolver, new Uri(Xhtml11.DtdPublicId, UriKind.RelativeOrAbsolute), ManifestResources.Xhtml11FlatDtdBytes, @override);
+            Add(resolver, new Uri(Xhtml11.DtdSystemId, UriKind.RelativeOrAbsolute), ManifestResources.Xhtml11FlatDtdBytes, @override);
         }
         
         /// <summary>

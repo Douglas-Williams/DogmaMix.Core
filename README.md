@@ -16,7 +16,7 @@ By releasing a production-grade implementation – XML-documented and unit-tested 
 open-source license, it is aspired that this code will be reused liberally wherever required.
 
 ### Can I use this project in my software?
-This project is released under the [MIT license](https://opensource.org/licenses/MIT), meaning that you can use it 
+This project is released under the [MIT License](https://opensource.org/licenses/MIT), meaning that you can use it 
 wherever you want – including for proprietary software – as long as you provide attribution. 
 However, keep in mind that this project’s public API is still not stable –
 future updates may introduce breaking changes to its definitions. 
@@ -24,7 +24,7 @@ Rather than downloading the entire project, we encourage you to copy any parts y
 directly into your code and adapt them per your requirements.
 
 ### How do I provide attribution?
-Pasting the URL of [the GitHub repository](https://github.com/Douglas-Williams/DogmaMix.Core) 
+Pasting the URL of the [GitHub repository](https://github.com/Douglas-Williams/DogmaMix.Core) 
 as a comment in your source code is sufficient. 
 You do not have to include the full MIT License, nor provide public attribution in your end-product. 
 If you’re copying types or members whose XML documentation contains references to other sources, 

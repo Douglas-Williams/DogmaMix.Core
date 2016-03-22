@@ -55,6 +55,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Collections\EnumerableUtilityTests.cs" />
+    <Compile Include="Collections\EnumeratorUtilityTests.cs" />
+    <Compile Include="Comparers\EqualityComparerBaseTests.cs" />
+    <Compile Include="Comparers\ComparerBaseTests.cs" />
+    <Compile Include="Comparers\ReferenceEqualityComparerTests.cs" />
     <Compile Include="Delegates\AsyncFuncExtensionsTests.cs" />
     <Compile Include="Delegates\AsyncActionExtensionsTests.cs" />
     <Compile Include="Delegates\FuncExtensionsTests.cs" />

@@ -103,10 +103,12 @@ namespace DogmaMix.Core.Strings
                 case StringComparison.OrdinalIgnoreCase:
                     return CultureInfo.InvariantCulture.CompareInfo.Compare(strA, indexA, lengthA, strB, indexB, lengthB, CompareOptions.OrdinalIgnoreCase);
 
-                // Might only happen if the StringComparison enumeration is extended in future or alternative implementations
-                // of the .NET Framework.
+                // Might only happen if the StringComparison enumeration is extended 
+                // in future or alternative implementations of the .NET Framework.
+                // Assumes that all callers of this internal method have same parameter name
+                // for "comparisonType".
                 default:
-                    throw new InvalidOperationException("The string comparison type is not supported.");
+                    throw new ArgumentException("The string comparison type is not supported.", nameof(comparisonType));
             }
         }
     }
