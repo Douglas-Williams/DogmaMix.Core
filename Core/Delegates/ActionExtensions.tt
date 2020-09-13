@@ -197,7 +197,7 @@ namespace DogmaMix.Core.Extensions
 <#
         }
 #>
-        public static Func<#=ConcatTypeParameters(action, append: "Task")#> WrapAsync<#=ConcatTypeParameters(action)#>(this Action<#=ConcatTypeParameters(action)#> action)
+        public static Func<#=ConcatTypeParameters(action, "Task")#> WrapAsync<#=ConcatTypeParameters(action)#>(this Action<#=ConcatTypeParameters(action)#> action)
         {
             ArgumentValidate.NotNull(action, nameof(action));
 

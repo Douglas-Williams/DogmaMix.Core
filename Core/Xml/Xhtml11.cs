@@ -12,12 +12,12 @@ namespace DogmaMix.Core.Xml
     public static class Xhtml11
     {
         /// <summary>
-        /// The public identifier of the DTD for XHTML 1.1.
+        /// The public identifier of the <abbr title="document type definition">DTD</abbr> for XHTML 1.1.
         /// </summary>
         public const string DtdPublicId = "-//W3C//DTD XHTML 1.1//EN";
 
         /// <summary>
-        /// The system identifier of the DTD for XHTML 1.1.
+        /// The system identifier of the <abbr title="document type definition">DTD</abbr> for XHTML 1.1.
         /// </summary>
         public const string DtdSystemId = "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd";
     }

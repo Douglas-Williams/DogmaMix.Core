@@ -30,8 +30,8 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/221925/1149773">How to convert an Stream into a byte[] in C#?</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/1080442/1149773">Creating a byte array from a stream</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/221925/1149773">How to convert an Stream into a byte[] in C#?</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/1080442/1149773">Creating a byte array from a stream</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         public static byte[] ReadToEnd(this Stream stream, int bufferSize = 81920)

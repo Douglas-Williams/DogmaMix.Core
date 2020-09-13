@@ -43,7 +43,7 @@ namespace DogmaMix.Core.Comparers
     /// </para>
     /// <list type="bullet">
     /// <listheader>References</listheader>
-    /// <item><see href="http://stackoverflow.com/q/35940406/1149773">Should derived classes hide the Default and Create static members inherited from Comparer&lt;T&gt;?</see>, <i>Stack Overflow</i></item>
+    /// <item><see href="https://stackoverflow.com/q/35940406/1149773">Should derived classes hide the Default and Create static members inherited from Comparer&lt;T&gt;?</see>, <i>Stack Overflow</i></item>
     /// </list>
     /// </remarks>
     [Serializable]
@@ -85,7 +85,7 @@ namespace DogmaMix.Core.Comparers
         /// <returns>
         /// <see langword="true"/> if the specified objects are equal; otherwise, <see langword="false"/>.
         /// </returns>
-        public abstract bool EqualsNonNull(T x, T y);
+        protected abstract bool EqualsNonNull(T x, T y);
 
         /// <summary>
         /// Serves as a hash function for the specified object
@@ -108,7 +108,7 @@ namespace DogmaMix.Core.Comparers
         /// </summary>
         /// <param name="obj">The non-null object for which to get a hash code.</param>
         /// <returns>A hash code for the specified object.</returns>
-        public abstract int GetHashCodeNonNull(T obj);
+        protected abstract int GetHashCodeNonNull(T obj);
 
         /// <summary>
         /// Determines whether the specified objects are equal.

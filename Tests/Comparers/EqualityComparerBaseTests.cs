@@ -123,7 +123,7 @@ namespace DogmaMix.Core.Comparers.Tests
 
         private class NullableIntComparer : EqualityComparerBase<int?>
         {
-            public override bool EqualsNonNull(int? x, int? y)
+            protected override bool EqualsNonNull(int? x, int? y)
             {
                 if (x == null)
                     Assert.Fail($"{nameof(x)} is null.");
@@ -133,7 +133,7 @@ namespace DogmaMix.Core.Comparers.Tests
                 return x.Value.Equals(y.Value);
             }
 
-            public override int GetHashCodeNonNull(int? obj)
+            protected override int GetHashCodeNonNull(int? obj)
             {
                 if (obj == null)
                     Assert.Fail($"{nameof(obj)} is null.");
@@ -144,7 +144,7 @@ namespace DogmaMix.Core.Comparers.Tests
 
         private class OrdinalStringComparer : EqualityComparerBase<string>
         {
-            public override bool EqualsNonNull(string x, string y)
+            protected override bool EqualsNonNull(string x, string y)
             {
                 if (x == null)
                     Assert.Fail($"{nameof(x)} is null.");
@@ -154,7 +154,7 @@ namespace DogmaMix.Core.Comparers.Tests
                 return string.Equals(x, y, StringComparison.Ordinal);
             }
 
-            public override int GetHashCodeNonNull(string obj)
+            protected override int GetHashCodeNonNull(string obj)
             {
                 if (obj == null)
                     Assert.Fail($"{nameof(obj)} is null.");

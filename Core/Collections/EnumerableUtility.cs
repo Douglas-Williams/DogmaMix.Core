@@ -29,7 +29,7 @@ namespace DogmaMix.Core.Collections
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/1577822/1149773">Passing a single item as IEnumerable&lt;T&gt;</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/1577822/1149773">Passing a single item as IEnumerable&lt;T&gt;</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         public static IEnumerable<TSource> Yield<TSource>(TSource element)
@@ -44,7 +44,7 @@ namespace DogmaMix.Core.Collections
         /// <param name="elements">The elements from which to create the sequence.</param>
         /// <returns>A sequence that contains the items in <paramref name="elements"/>.</returns>
         /// <remarks>
-        /// <see href="http://stackoverflow.com/a/1577868/1149773">Jon Skeet recommends</see> against returning a list or an array,
+        /// <see href="https://stackoverflow.com/a/1577868/1149773">Jon Skeet recommends</see> against returning a list or an array,
         /// since an unscrupulous consumer could cast it back and change its contents, breaking the expected immutable behavior
         /// for other consumers of the same sequence.
         /// </remarks>

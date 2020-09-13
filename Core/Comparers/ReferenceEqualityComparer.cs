@@ -34,9 +34,9 @@ namespace DogmaMix.Core.Comparers
     /// </para>
     /// <list type="bullet">
     /// <listheader>References</listheader>
-    /// <item><see href="http://referencesource.microsoft.com/#System.Core/Microsoft/Scripting/Utils/ReferenceEqualityComparer.cs">ReferenceEqualityComparer</see>, <i>Microsoft Reference Source</i></item>
-    /// <item><see href="http://stackoverflow.com/q/1890058/1149773">IEqualityComparer&lt;T&gt; that uses ReferenceEquals</see>, <i>Stack Overflow</i></item>
-    /// <item><see href="http://stackoverflow.com/q/11240036/1149773">What does RuntimeHelpers.GetHashCode do</see>, <i>Stack Overflow</i></item>
+    /// <item><see href="https://referencesource.microsoft.com/#System.Core/Microsoft/Scripting/Utils/ReferenceEqualityComparer.cs">ReferenceEqualityComparer</see>, <i>Microsoft Reference Source</i></item>
+    /// <item><see href="https://stackoverflow.com/q/1890058/1149773">IEqualityComparer&lt;T&gt; that uses ReferenceEquals</see>, <i>Stack Overflow</i></item>
+    /// <item><see href="https://stackoverflow.com/q/11240036/1149773">What does RuntimeHelpers.GetHashCode do</see>, <i>Stack Overflow</i></item>
     /// </list>
     /// </remarks>
     public sealed class ReferenceEqualityComparer<T> : EqualityComparer<T>
@@ -66,7 +66,7 @@ namespace DogmaMix.Core.Comparers
         /// <param name="obj">The object for which to get a hash code.</param>
         /// <returns>A hash code for the specified object.</returns>
         /// <remarks>
-        /// <see href="http://stackoverflow.com/a/11240130/1149773">Jon Skeet recommends</see> a nullity check:
+        /// <see href="https://stackoverflow.com/a/11240130/1149773">Jon Skeet recommends</see> a nullity check:
         /// <blockquote>
         /// The nullity check may be unnecessary due to a similar check in
         /// RuntimeHelpers.GetHashCode, but it's not documented.

@@ -41,7 +41,7 @@ namespace DogmaMix.Core.Comparers
     /// </para>
     /// <list type="bullet">
     /// <listheader>References</listheader>
-    /// <item><see href="http://stackoverflow.com/q/35940406/1149773">Should derived classes hide the Default and Create static members inherited from Comparer&lt;T&gt;?</see>, <i>Stack Overflow</i></item>
+    /// <item><see href="https://stackoverflow.com/q/35940406/1149773">Should derived classes hide the Default and Create static members inherited from Comparer&lt;T&gt;?</see>, <i>Stack Overflow</i></item>
     /// </list>
     /// </remarks>
     [Serializable]

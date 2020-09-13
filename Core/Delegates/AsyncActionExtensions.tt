@@ -58,7 +58,7 @@ namespace DogmaMix.Core.Extensions
         /// <paramref name="result"/> would not be returned.
         /// </para>
         /// <para>
-        /// This implementation in based on the <see href="http://stackoverflow.com/a/35633989/1149773">answer by Jon Skeet</see>.
+        /// This implementation in based on the <see href="https://stackoverflow.com/a/35633989/1149773">answer by Jon Skeet</see>.
         /// Exceptions that are thrown synchronously from the asynchronous action delegate
         /// will still get delivered synchronously from the asynchronous function delegate.
         /// To get exceptions delivered asynchronously through the returned <see cref="Task{TResult}"/>, use the 
@@ -66,7 +66,7 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/35633615/1149773">Convert asynchronous action to asynchronous function delegate, preserving synchronous exception delivery</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/35633615/1149773">Convert asynchronous action to asynchronous function delegate, preserving synchronous exception delivery</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
 <#
@@ -154,10 +154,10 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/21033150/1149773">Any difference between “await Task.Run(); return;” and “return Task.Run()”?</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/21661511/1149773">Contract agreement when implementing a method that returns a Task</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/21055920/1149773">Handling exceptions from the synchronous part of async method</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/35633615/1149773">Convert asynchronous action to asynchronous function delegate preserving synchronous exception delivery</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/21033150/1149773">Any difference between “await Task.Run(); return;” and “return Task.Run()”?</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/21661511/1149773">Contract agreement when implementing a method that returns a Task</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/21055920/1149773">Handling exceptions from the synchronous part of async method</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/35633615/1149773">Convert asynchronous action to asynchronous function delegate preserving synchronous exception delivery</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
 <#
@@ -176,9 +176,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (<#=ConcatInvokeParameters(func)#>) =>
-            { 
                 await asyncAction(<#=ConcatInvokeArguments(func)#>).ConfigureAwait(false);
-            };
         }
 
 <#

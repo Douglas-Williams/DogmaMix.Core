@@ -26,7 +26,7 @@ namespace DogmaMix.Core.Types
         /// of the <see cref="Enum"/> class in the .NET Framework Class Library.
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/1398664/1149773">Enum.GetValues() Return Type</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/1398664/1149773">Enum.GetValues() Return Type</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         public static IEnumerable<TEnum> GetValues<TEnum>()

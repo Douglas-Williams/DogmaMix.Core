@@ -1,4 +1,6 @@
-﻿<#@ assembly name="System.Core" #>
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ output extension="/" #>
+<#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Linq" #>
@@ -6,6 +8,8 @@
 <#@ import namespace="System.Text" #>
 
 <#+
+// This template provides utility methods for the other templates to invoke.
+
 private static TypeInfo[] GetActionDelegates()
 {
     // Action to Action`8 are defined in mscorlib

@@ -40,7 +40,7 @@ namespace DogmaMix.Core.Extensions
         /// <paramref name="result"/> would not be returned.
         /// </para>
         /// <para>
-        /// This implementation in based on the <see href="http://stackoverflow.com/a/35633989/1149773">answer by Jon Skeet</see>.
+        /// This implementation in based on the <see href="https://stackoverflow.com/a/35633989/1149773">answer by Jon Skeet</see>.
         /// Exceptions that are thrown synchronously from the asynchronous action delegate
         /// will still get delivered synchronously from the asynchronous function delegate.
         /// To get exceptions delivered asynchronously through the returned <see cref="Task{TResult}"/>, use the 
@@ -48,7 +48,7 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/35633615/1149773">Convert asynchronous action to asynchronous function delegate, preserving synchronous exception delivery</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/35633615/1149773">Convert asynchronous action to asynchronous function delegate, preserving synchronous exception delivery</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         public static Func<Task<TResult>> ReturnAsync<TResult>(this Func<Task> asyncAction, TResult result)
@@ -118,10 +118,10 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/21033150/1149773">Any difference between “await Task.Run(); return;” and “return Task.Run()”?</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/21661511/1149773">Contract agreement when implementing a method that returns a Task</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/21055920/1149773">Handling exceptions from the synchronous part of async method</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/35633615/1149773">Convert asynchronous action to asynchronous function delegate preserving synchronous exception delivery</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/21033150/1149773">Any difference between “await Task.Run(); return;” and “return Task.Run()”?</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/21661511/1149773">Contract agreement when implementing a method that returns a Task</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/21055920/1149773">Handling exceptions from the synchronous part of async method</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/35633615/1149773">Convert asynchronous action to asynchronous function delegate preserving synchronous exception delivery</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         public static Func<Task> DeliverAsync(this Func<Task> asyncAction)
@@ -129,9 +129,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async () =>
-            { 
                 await asyncAction().ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -186,9 +184,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T arg) =>
-            { 
                 await asyncAction(arg).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -245,9 +241,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2) =>
-            { 
                 await asyncAction(arg1, arg2).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -306,9 +300,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3) =>
-            { 
                 await asyncAction(arg1, arg2, arg3).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -369,9 +361,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -434,9 +424,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -501,9 +489,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -570,9 +556,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -641,9 +625,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -714,9 +696,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -789,9 +769,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -866,9 +844,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -945,9 +921,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -1026,9 +1000,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -1109,9 +1081,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -1194,9 +1164,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15).ConfigureAwait(false);
-            };
         }
 
         /// <summary>
@@ -1281,9 +1249,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncAction, nameof(asyncAction));
                         
             return async (T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16) =>
-            { 
                 await asyncAction(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16).ConfigureAwait(false);
-            };
         }
 
     }

@@ -37,14 +37,11 @@ namespace DogmaMix.Core.Disposables
     /// </blockquote>
     /// <list type="bullet">
     /// <listheader>References</listheader>
-    /// <item><see href="https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx">Dispose Pattern</see>, <i>MSDN Library</i></item>
-    /// <item><see href="https://msdn.microsoft.com/en-us/library/fs2xkftw(v=vs.110).aspx">Implementing a Dispose Method</see>, <i>MSDN Library</i></item>
+    /// <item><see href="https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose">Implementing a Dispose Method</see>, <i>MSDN Library</i></item>
     /// </list>
     /// </remarks>
     public abstract class FinalizableDisposable : Disposable
     {
-        #region Destructor
-
         /// <summary>
         /// Destructs the current object, performing cleanup operations on unmanaged resources it holds.
         /// </summary>
@@ -55,7 +52,5 @@ namespace DogmaMix.Core.Disposables
         {
             Dispose(false);
         }
-
-        #endregion
     }
 }

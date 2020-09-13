@@ -1,16 +1,20 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DogmaMix.Core.Disposables
 {
     /// <summary>
     /// Provides a reusable base implementation of the 
-    /// <see href="https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx#basic_pattern">Basic Dispose Pattern</see>.
+    /// <see href="https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose">Basic Dispose Pattern</see>.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -52,17 +56,14 @@ namespace DogmaMix.Core.Disposables
     /// </blockquote>
     /// <list type="bullet">
     /// <listheader>References</listheader>
-    /// <item><see href="https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx">Dispose Pattern</see>, <i>MSDN Library</i></item>
-    /// <item><see href="https://msdn.microsoft.com/en-us/library/fs2xkftw(v=vs.110).aspx">Implementing a Dispose Method</see>, <i>MSDN Library</i></item>
+    /// <item><see href="https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose">Implementing a Dispose Method</see>, <i>MSDN Library</i></item>
     /// <item><see href="https://coding.abel.nu/2012/01/disposable/">Disposable Base Class</see> by Anders Abel</item>
     /// </list>
     /// </remarks>
     public abstract class Disposable : IDisposable
     {
-        #region Properties
-
         /// <summary>
-        /// Gets whether the <see cref="Dispose()"/> method has been called on the current instance.
+        /// Gets whether the <see cref="Dispose()"/> method has been called on the current object.
         /// Returns <see langword="true"/> even if <see cref="Dispose(bool)"/> has not yet completed executing, 
         /// or has thrown an unhandled exception.
         /// </summary>
@@ -73,7 +74,7 @@ namespace DogmaMix.Core.Disposables
 
         /// <summary>
         /// Gets whether the <see cref="Dispose()"/> method has completed execution successfully 
-        /// during its last invocation on the current instance.
+        /// during its last invocation on the current object.
         /// </summary>
         /// <remarks>
         /// Once this property becomes <see langword="true"/>, it will always remain <see langword="true"/>.
@@ -83,7 +84,7 @@ namespace DogmaMix.Core.Disposables
 
         /// <summary>
         /// Gets whether the <see cref="Dispose()"/> method has thrown an unhandled exception
-        /// during its last invocation on the current instance.
+        /// during its last invocation on the current object.
         /// </summary>
         /// <remarks>
         /// If this property becomes <see langword="true"/>, subsequent calls to <see cref="Dispose()"/> will still be forwarded 
@@ -91,11 +92,7 @@ namespace DogmaMix.Core.Disposables
         /// execution successfully (with <see cref="HasDisposeCompleted"/> being set to <see langword="true"/> in its stead).
         /// </remarks>
         public bool HasDisposeFailed { get; private set; }
-
-        #endregion
-
-        #region Methods
-
+        
         /// <summary>
         /// Releases all managed and unmanaged resources used by the current object.
         /// </summary>
@@ -145,6 +142,23 @@ namespace DogmaMix.Core.Disposables
         /// </remarks>
         protected abstract void Dispose(bool disposing);
 
-        #endregion
+        /// <summary>
+        /// Throws an <see cref="ObjectDisposedException"/> if the current instance has been disposed.
+        /// </summary>
+        /// <remarks>
+        /// The name of this method is based on <see cref="CancellationToken.ThrowIfCancellationRequested"/>.
+        /// The <see cref="ObjectDisposedException.ObjectName"/> of the thrown <see cref="ObjectDisposedException"/>
+        /// is initialized from the <see cref="MemberInfo.Name"/> of the current type.
+        /// This behavior is similar to the <see cref="IDisposable"/> implementations of such types from the
+        /// .NET Framework Class Library as <see cref="Barrier"/> and <see cref="CountdownEvent"/>.
+        /// Other types, such as <see cref="HttpWebResponse"/>, use the <see cref="Type.FullName"/> instead.
+        /// </remarks>
+        protected void ThrowIfDisposed()
+        {
+            if (HasDisposeCompleted)
+            {
+                throw new ObjectDisposedException(GetType().Name);
+            }
+        }
     }
 }

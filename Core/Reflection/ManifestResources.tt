@@ -45,7 +45,7 @@ namespace DogmaMix.Core
     /// </para>
     /// <list type="bullet">
     /// <listheader>References</listheader>
-    /// <item><see href="http://stackoverflow.com/a/3314213/1149773">How to read embedded resource text file</see> (answer), <i>Stack Overflow</i></item>
+    /// <item><see href="https://stackoverflow.com/a/3314213/1149773">How to read embedded resource text file</see> (answer), <i>Stack Overflow</i></item>
     /// <item><see href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/632d6914-8c90-450e-8ea0-fa60d2c3b6b6/">Manifest name for Embedded resources</see>, <i>MSDN Forums</i></item>
     /// </list>
     /// </remarks>
@@ -54,11 +54,10 @@ namespace DogmaMix.Core
 <#
     var csprojPath = Host.ResolveAssemblyReference("$(ProjectPath)");
     var csprojDocument = XDocument.Load(csprojPath, LoadOptions.PreserveWhitespace);
-    XNamespace ns = "http://schemas.microsoft.com/developer/msbuild/2003";
     var resourceElements = csprojDocument
-        .Element(ns + "Project")
-        .Elements(ns + "ItemGroup")
-        .SelectMany(itemGroup => itemGroup.Elements(ns + "EmbeddedResource"))
+        .Element("Project")
+        .Elements("ItemGroup")
+        .SelectMany(itemGroup => itemGroup.Elements("EmbeddedResource"))
         .ToArray();      
 
     bool csprojChanged = false;
@@ -69,7 +68,7 @@ namespace DogmaMix.Core
             continue;
 
         string resourceName;
-        var logicalNameElement = resourceElement.Element(ns + "LogicalName");
+        var logicalNameElement = resourceElement.Element("LogicalName");
         if (logicalNameElement != null)
         {
             resourceName = logicalNameElement.Value;
@@ -78,7 +77,7 @@ namespace DogmaMix.Core
         {
             resourceName = Path.GetFileName(resourcePath);
 
-            resourceElement.Add(new XElement(ns + "LogicalName", resourceName));
+            resourceElement.Add(new XElement("LogicalName", resourceName));
             csprojChanged = true;
         }
         

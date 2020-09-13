@@ -35,7 +35,8 @@ namespace DogmaMix.Core.Globalization
         /// Restores the former culture that was active when this instance was created.
         /// </summary>
         /// <param name="disposing">
-        /// <see langword="true"/>, since the method call always comes from the <see cref="Dispose"/> method.
+        /// <see langword="true"/>, since the method call always comes from 
+        /// the <see cref="Disposable.Dispose()"/> method.
         /// </param>
         protected override void Dispose(bool disposing)
         {

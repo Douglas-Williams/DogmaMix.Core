@@ -18,9 +18,9 @@ namespace DogmaMix.Core
     /// </para>
     /// <list type="bullet">
     /// <listheader>References</listheader>
-    /// <item><see href="https://msdn.microsoft.com/en-us/library/dn986596.aspx">nameof</see>, <i>MSDN Library</i></item>
-    /// <item><see href="http://stackoverflow.com/q/11063502/1149773">Getting names of local variables (and parameters) at run-time through lambda expressions</see>, <i>Stack Overflow</i></item>
-    /// <item><see href="http://stackoverflow.com/q/10759632/1149773">Lambda expressions for refactor-safe ArgumentException</see>, <i>Stack Overflow</i></item>
+    /// <item><see href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof">nameof</see>, <i>MSDN Library</i></item>
+    /// <item><see href="https://stackoverflow.com/q/11063502/1149773">Getting names of local variables (and parameters) at run-time through lambda expressions</see>, <i>Stack Overflow</i></item>
+    /// <item><see href="https://stackoverflow.com/q/10759632/1149773">Lambda expressions for refactor-safe ArgumentException</see>, <i>Stack Overflow</i></item>
     /// </list>
     /// </remarks>
     public static class ArgumentValidate
@@ -41,7 +41,7 @@ namespace DogmaMix.Core
         /// </blockquote>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/a/8824259/1149773">Comparing a generic against null that could be a value or reference type?</see> (answer) by Eric Lippert, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/a/8824259/1149773">Comparing a generic against null that could be a value or reference type?</see> (answer) by Eric Lippert, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         /// <example>

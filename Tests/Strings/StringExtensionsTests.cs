@@ -25,7 +25,7 @@ namespace DogmaMix.Core.Extensions.Tests
                 Assert.IsTrue("Encyclopædia".Contains("aed", StringComparison.CurrentCulture));
             }
         }
-
+        
         [TestMethod]
         public void Find_Exceptions()
         {
@@ -89,18 +89,18 @@ namespace DogmaMix.Core.Extensions.Tests
                 FindInnerTest("", "", StringComparison.CurrentCulture, 0, 0);
                 FindInnerTest("", "ABC", StringComparison.CurrentCulture, -1, -1);
 
-                // Jon Skeet: http://stackoverflow.com/q/15980310/1149773
+                // Jon Skeet: https://stackoverflow.com/q/15980310/1149773
                 // U+00E9 is a single code point for e-acute
                 // e followed by U+0301 still means e-acute, but from two code points
                 FindInnerTest("25 b\u00e9d 2013", "be\u0301d", StringComparison.CurrentCulture, 3, 3);
 
-                // Esailija: http://stackoverflow.com/questions/15980310/how-can-i-perform-a-culture-sensitive-starts-with-operation-from-the-middle-of#comment23190863_16062528
+                // Esailija: https://stackoverflow.com/questions/15980310/how-can-i-perform-a-culture-sensitive-starts-with-operation-from-the-middle-of#comment23190863_16062528
                 using (new CultureSwapper(PredefinedCulture.German))
                 {
                     FindInnerTest("x ßheßieß y", "sshessiess", StringComparison.CurrentCulture, 2, 7);
                 }
 
-                // Mårten Wikström: http://stackoverflow.com/a/22513015/1149773
+                // Mårten Wikström: https://stackoverflow.com/a/22513015/1149773
                 FindInnerTest("x b\u00e9d y", "be\u0301d", 2, StringComparison.CurrentCulture, 2, 3);
                 FindInnerTest("x be\u0301d y", "b\u00e9d", 2, StringComparison.CurrentCulture, 2, 4);
                 FindInnerTest("x b\u00e9d", "be\u0301d", 2, StringComparison.CurrentCulture, 2, 3);
@@ -112,7 +112,7 @@ namespace DogmaMix.Core.Extensions.Tests
                 FindInnerTest("b\u00e9", "be\u0301d", 0, StringComparison.CurrentCulture, -1, -1);
                 FindInnerTest("be\u0301", "b\u00e9d", 0, StringComparison.CurrentCulture, -1, -1);
 
-                // Michael Liu: http://stackoverflow.com/q/20480016/1149773
+                // Michael Liu: https://stackoverflow.com/q/20480016/1149773
                 FindInnerTest("déf", "é", StringComparison.CurrentCulture, 1, 1);
                 FindInnerTest("déf", "e\u0301", StringComparison.CurrentCulture, 1, 1);
                 FindInnerTest("de\u0301f", "é", StringComparison.CurrentCulture, 1, 2);
@@ -131,39 +131,42 @@ namespace DogmaMix.Core.Extensions.Tests
             }
         }
 
-        private static void FindInnerTest(string source, string substring, StringComparison comparisonType, int expectedIndex, int expectedLength)
+        private static void FindInnerTest(string source, string searchValue, StringComparison comparisonType, int expectedIndex, int expectedLength)
         {
             int actualIndex, actualLength;
-            source.Find(substring, comparisonType, out actualIndex, out actualLength);
+            bool actualResult = source.Find(searchValue, comparisonType, out actualIndex, out actualLength);
 
+            Assert.AreEqual(expectedIndex >= 0, actualResult);
             Assert.AreEqual(expectedIndex, actualIndex);
             Assert.AreEqual(expectedLength, actualLength);
         }
 
-        private static void FindInnerTest(string source, string substring, int searchIndex, StringComparison comparisonType, int expectedIndex, int expectedLength)
+        private static void FindInnerTest(string source, string searchValue, int searchIndex, StringComparison comparisonType, int expectedIndex, int expectedLength)
         {
             int actualIndex, actualLength;
-            source.Find(substring, searchIndex, comparisonType, out actualIndex, out actualLength);
+            bool actualResult = source.Find(searchValue, searchIndex, comparisonType, out actualIndex, out actualLength);
 
+            Assert.AreEqual(expectedIndex >= 0, actualResult);
             Assert.AreEqual(expectedIndex, actualIndex);
             Assert.AreEqual(expectedLength, actualLength);
         }
 
-        private static void FindInnerTest(string source, string substring, int searchIndex, int searchLength, StringComparison comparisonType, int expectedIndex, int expectedLength)
+        private static void FindInnerTest(string source, string searchValue, int searchIndex, int searchLength, StringComparison comparisonType, int expectedIndex, int expectedLength)
         {
             int actualIndex, actualLength;
-            source.Find(substring, searchIndex, searchLength, comparisonType, out actualIndex, out actualLength);
+            bool actualResult = source.Find(searchValue, searchIndex, searchLength, comparisonType, out actualIndex, out actualLength);
 
+            Assert.AreEqual(expectedIndex >= 0, actualResult);
             Assert.AreEqual(expectedIndex, actualIndex);
             Assert.AreEqual(expectedLength, actualLength);
         }
 
         [TestMethod]
-        public void Find_RemoveFirst()
+        public void Find_RemoveFirst_Inline()
         {
             using (new CultureSwapper(PredefinedCulture.EnglishUnitedStates))
             {
-                // LukeH: http://stackoverflow.com/a/2201648/1149773
+                // LukeH: https://stackoverflow.com/a/2201648/1149773
                 var sourceString = "Encyclopædia";
                 var removeString = "aedia";
                 int index, length;
@@ -171,6 +174,34 @@ namespace DogmaMix.Core.Extensions.Tests
                 string cleanPath = index < 0 ? sourceString : sourceString.Remove(index, length);
                 Assert.AreEqual("Encyclop", cleanPath);
             }
+        }
+
+        [TestMethod]
+        public void Find_RemoveFirst_Method()
+        {
+            using (new CultureSwapper(PredefinedCulture.EnglishUnitedStates))
+            {
+                Assert.AreEqual("abe", RemoveFirst("abcde", "cd"));
+                Assert.AreEqual("", RemoveFirst("ani­mal", "animal"));
+                Assert.AreEqual("ct", RemoveFirst("cåt", "å"));
+                Assert.AreEqual("caf", RemoveFirst("café", "é"));
+                Assert.AreEqual("encyclop", RemoveFirst("encyclopædia", "aedia"));
+                
+                Assert.AreEqual("abe", RemoveFirst("abcde", "cd"));
+                Assert.AreEqual("", RemoveFirst("ani\u00ADmal", "animal"));
+                Assert.AreEqual("ct", RemoveFirst("c\u0061\u030At", "\u00E5"));
+                Assert.AreEqual("caf", RemoveFirst("caf\u00E9", "\u0065\u0301"));
+                Assert.AreEqual("encyclop", RemoveFirst("encyclop\u00E6dia", "\u0061\u0065dia"));
+            }
+        }
+
+        private static string RemoveFirst(string source, string value)
+        {
+            int index, length;
+            if (source.Find(value, StringComparison.CurrentCulture, out index, out length))
+                return source.Remove(index, length);
+
+            return source;
         }
 
         [TestMethod]

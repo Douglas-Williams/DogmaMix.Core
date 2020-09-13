@@ -65,8 +65,8 @@ namespace DogmaMix.Core.Extensions
         /// </blockquote>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/17284517/1149773">Is Task.Result the same as .GetAwaiter.GetResult()?</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://blog.stephencleary.com/2014/12/a-tour-of-task-part-6-results.html">A Tour of Task, Part 6: Results</see> by Stephen Cleary</item>
+        /// <item><see href="https://stackoverflow.com/q/17284517/1149773">Is Task.Result the same as .GetAwaiter.GetResult()?</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://blog.stephencleary.com/2014/12/a-tour-of-task-part-6-results.html">A Tour of Task, Part 6: Results</see> by Stephen Cleary</item>
         /// <item><see href="https://github.com/aspnet/Security/issues/59">Replace any Task.Result calls with Task.GetAwaiter().GetResult()</see></item>
         /// <item><see href="https://msdn.microsoft.com/en-us/magazine/dn818493.aspx#code-snippet-5">Async Programming : Unit Testing Asynchronous Code</see> by Stephen Cleary</item>
         /// </list>

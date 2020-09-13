@@ -44,9 +44,9 @@ namespace DogmaMix.Core.Strings
         /// <remarks>
         /// <para>
         /// This method implementation uses a <see href="https://en.wikipedia.org/wiki/Lookup_table">lookup table</see>,
-        /// and is similar to <see href="http://stackoverflow.com/a/24343727/1149773">CodesInChaos's solution</see>.
-        /// <see href="http://stackoverflow.com/a/624379/1149773">Performance Analysis</see> shows that this approach can
-        /// be an order of magnitude faster than <see href="http://stackoverflow.com/a/311179/1149773">popular solutions</see>
+        /// and is similar to <see href="https://stackoverflow.com/a/24343727/1149773">CodesInChaos's solution</see>.
+        /// <see href="https://stackoverflow.com/a/624379/1149773">Performance Analysis</see> shows that this approach can
+        /// be an order of magnitude faster than <see href="https://stackoverflow.com/a/311179/1149773">popular solutions</see>
         /// that create <see langword="string"/> instances for each two-character substring in the hexadecimal string, 
         /// due to the large quantity of object allocations incurred by the latter.
         /// </para>
@@ -79,7 +79,7 @@ namespace DogmaMix.Core.Strings
         /// Since each hexadecimal character represents a nibble (four bits),
         /// a <i>pair</i> of hexadecimal characters is required to represent a byte (eight bits).
         /// For this reason, the source string must have an even number of characters;
-        /// see <see href="http://stackoverflow.com/questions/311165/how-do-you-convert-byte-array-to-hexadecimal-string-and-vice-versa/24343727#comment2392703_311179">Stack Overflow comment</see>.
+        /// see <see href="https://stackoverflow.com/questions/311165/how-do-you-convert-byte-array-to-hexadecimal-string-and-vice-versa/24343727#comment2392703_311179">Stack Overflow comment</see>.
         /// </para>
         /// <para>
         /// This method implementation uses a <see href="https://en.wikipedia.org/wiki/Lookup_table">lookup table</see>.

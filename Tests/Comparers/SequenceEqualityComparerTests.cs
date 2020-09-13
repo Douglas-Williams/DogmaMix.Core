@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -54,7 +56,7 @@ namespace DogmaMix.Core.Comparers.Tests
         [TestMethod]
         public void Equals_Empty()
         {
-            var empty = ArrayUtility<string>.Empty;
+            var empty = Array.Empty<string>();
             var comparer = SequenceEqualityComparer<string>.Default;
             EqualityAssert.NotEquals(empty, null, comparer);
             EqualityAssert.NotEquals(empty, x, comparer);
@@ -71,6 +73,26 @@ namespace DogmaMix.Core.Comparers.Tests
                 Assert.AreEqual(
                     comparer.GetHashCode(y),
                     comparer.GetHashCode(z));
+            }
+        }
+
+        [TestMethod]
+        public void Serialize_BinaryFormatter()
+        {
+            var x = new[] { "abc", "def" };
+            var y = new[] { "abc", "DEF" };
+            var z = new[] { "xyz" };
+
+            var binaryFormatter = new BinaryFormatter();
+            using (var stream = new MemoryStream())
+            {
+                var original = SequenceEqualityComparer.Create(StringComparer.OrdinalIgnoreCase);
+                binaryFormatter.Serialize(stream, original);
+                stream.Position = 0;
+
+                var comparer = (SequenceEqualityComparer<string>)binaryFormatter.Deserialize(stream);
+                EqualityAssert.Equals(x, y, comparer);
+                EqualityAssert.NotEquals(x, z, comparer);
             }
         }
     }

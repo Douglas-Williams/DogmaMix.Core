@@ -88,13 +88,13 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/a/12695631/1149773">Get Index of First non-Whitespace Character in C# String</see> (answer), <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/a/12695631/1149773">Get Index of First non-Whitespace Character in C# String</see> (answer), <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         public static int IndexOf<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
             ArgumentValidate.NotNull(source, nameof(source));
-            ArgumentValidate.NotNull(source, nameof(predicate));
+            ArgumentValidate.NotNull(predicate, nameof(predicate));
 
             // Since IndexesOf is implemented as an iterator, the FirstOrDefault() call 
             // will only cause it to iterate up to the first match.
@@ -183,8 +183,8 @@ namespace DogmaMix.Core.Extensions
         /// its <see cref="IEnumerable{T}.GetEnumerator"/> method directly or by using <see langword="foreach"/>.
         /// </para>
         /// <para>
-        /// Furthermore, this method is implemented as an <see href="https://msdn.microsoft.com/en-us/library/9k7k7cf0.aspx">iterator</see>
-        /// that uses <see href="https://msdn.microsoft.com/en-us/library/bb943859.aspx#Anchor_1">lazy evaluation</see>.
+        /// Furthermore, this method is implemented as an <see href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/yield">iterator</see>
+        /// that uses <see href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/deferred-execution-and-lazy-evaluation-in-linq-to-xml#eager-vs-lazy-evaluation">lazy evaluation</see>.
         /// Each call to the iterator would only process elements up to next match.
         /// </para>
         /// </remarks>
@@ -332,10 +332,33 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
+        /// <item><see href="https://dogmamix.com/cms/blog/TryFastCount">TryFastCount: Optimizing sequence operations for known lengths</see>, <i>DogmaMix.com</i></item>
         /// <item><see href="http://www.codeducky.org/engineering-a-collection-equality-function/#fast-count">Fast Counting</see> by Mike Adelson</item>
         /// <item><see href="https://resharper-support.jetbrains.com/hc/en-us/community/posts/206034539#community_comment_206470879">TryFastCount&lt;T&gt;</see> by Richard Deeming</item>
         /// </list>
         /// </remarks>
+        /// <example>
+        /// <code>
+        /// public static bool SequenceEqual&lt;TSource&gt;(
+        ///     this IEnumerable&lt;TSource&gt; first,
+        ///     IEnumerable&lt;TSource&gt; second,
+        ///     IEqualityComparer&lt;TSource&gt; comparer)
+        /// {
+        ///     // null checks
+        /// 
+        ///     // Optimization for in-memory collections:
+        ///     int firstCount, secondCount;
+        ///     if (first.TryFastCount(out firstCount) &amp;&amp;
+        ///         second.TryFastCount(out secondCount) &amp;&amp;
+        ///         firstCount != secondCount)
+        ///     {
+        ///         return false;
+        ///     }
+        /// 
+        ///     // perform equality comparison by enumerating the two sequences
+        /// }
+        /// </code>
+        /// </example>
         public static bool TryFastCount<TSource>(this IEnumerable<TSource> source, out int count)
         {
             ArgumentValidate.NotNull(source, nameof(source));
@@ -343,7 +366,7 @@ namespace DogmaMix.Core.Extensions
             var collection = source as ICollection<TSource>;
             if (collection != null)
             {
-                count = collection.Count();
+                count = collection.Count;
                 return true;
             }
             

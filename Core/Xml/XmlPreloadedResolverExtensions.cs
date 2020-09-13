@@ -35,7 +35,7 @@ namespace DogmaMix.Core.Extensions
         /// <para>
         /// The <see cref="XmlPreloadedResolver"/> class is preloaded by default with DTDs defined in XHTML 1.0 and RSS 0.91, 
         /// but has not been updated to include XHTML 1.1 as of .NET Framework 4.6.1.
-        /// Per the reference source for the <see href="http://referencesource.microsoft.com/#System.Xml/System/Xml/Resolvers/XmlPreloadedResolver.cs,33dd036cf1a84ad9">AddKnownDtd</see>
+        /// Per the reference source for the <see href="https://referencesource.microsoft.com/#System.Xml/System/Xml/Resolvers/XmlPreloadedResolver.cs,33dd036cf1a84ad9">AddKnownDtd</see>
         /// private method of the <see cref="XmlPreloadedResolver"/> class, the default DTDs are mapped to both their public and their system identifiers.
         /// In the same vein, this method maps the DTD for XHTML 1.1 to its public identifier, <see cref="Xhtml11.DtdPublicId"/>,
         /// as well as to its system identifier, <see cref="Xhtml11.DtdSystemId"/>.
@@ -48,8 +48,8 @@ namespace DogmaMix.Core.Extensions
         /// <list type="bullet">
         /// <listheader>References</listheader>
         /// <item><see href="https://en.wikipedia.org/wiki/XML_Catalog">XML Catalog</see>, <i>Wikipedia</i></item>
-        /// <item><see href="http://stackoverflow.com/q/1645767/1149773">How do I resolve entities when loading into an XDocument?"</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/3733255/1149773">How to speed up loading DTD through DOCTYPE</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/1645767/1149773">How do I resolve entities when loading into an XDocument?"</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/3733255/1149773">How to speed up loading DTD through DOCTYPE</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         /// <example>

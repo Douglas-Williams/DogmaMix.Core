@@ -59,11 +59,21 @@ namespace DogmaMix.Core.Disposables.Tests
             Assert.AreEqual(3, disposable.DisposeCount);
         }
 
+        [TestMethod]
+        public void ThrowIfDisposed()
+        {
+            var disposable = new SampleDisposable();
+            disposable.DoSomething();
+            disposable.Dispose();
+            var exception = ExceptionAssert.Throws<ObjectDisposedException>(() => disposable.DoSomething());
+            Assert.AreEqual(nameof(SampleDisposable), exception.ObjectName);
+        }
+
         private class SampleDisposable : Disposable
         {
             public int DisposeCount { get; private set; }
             public bool ThrowException { get; set; }
-
+            
             protected override void Dispose(bool disposing)
             {
                 Assert.IsTrue(disposing);
@@ -74,6 +84,11 @@ namespace DogmaMix.Core.Disposables.Tests
 
                 if (ThrowException)
                     throw new InvalidOperationException();
+            }
+
+            public void DoSomething()
+            {
+                ThrowIfDisposed();
             }
         }
     }

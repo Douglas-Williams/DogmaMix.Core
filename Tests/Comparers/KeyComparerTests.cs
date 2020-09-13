@@ -68,7 +68,7 @@ namespace DogmaMix.Core.Comparers.Tests
 
             int[] nums = new[] { 47, -32, -54, 18, 62, -71, 58 };
             var byAbs = new SortedSet<int>(nums, KeyComparer.Create((int n) => Math.Abs(n)));
-            EnumerableAssert.AreEqual(new [] { 18, -32, 47, -54, 58, 62, -71 }, byAbs);
+            EnumerableAssert.AreEqual(new[] { 18, -32, 47, -54, 58, 62, -71 }, byAbs);
         }
 
         [TestMethod]
@@ -95,7 +95,7 @@ namespace DogmaMix.Core.Comparers.Tests
             EnumerableAssert.AreEqual(new[] { "Spencer", "Tod", "Lucia", "Powell", "Celia" }, bySsn.Select(p => p.FirstName));
             EnumerableAssert.AreEqual(new[] { "Powell", "Lucia", "Tod", "Celia", "Spencer" }, byDateOfBirth.Select(p => p.FirstName));
             EnumerableAssert.AreEqual(new[] { "Celia", "Lucia", "Powell", "Spencer", "Tod" }, byFullName.Select(p => p.FirstName));
-            
+
             var person = new Person { Ssn = "301-00-1582", DateOfBirth = new DateTime(1984, 11, 01), FirstName = "Teddy", LastName = "Wake" };
             bySsn.Add(person);
             EnumerableAssert.AreEqual(new[] { "Spencer", "Teddy", "Tod", "Lucia", "Powell", "Celia" }, bySsn.Select(p => p.FirstName));
@@ -108,7 +108,7 @@ namespace DogmaMix.Core.Comparers.Tests
             var byAbs = new SortedSet<int>(nums, KeyComparer.Create((int n) => Math.Abs(n)));
             EnumerableAssert.AreEqual(new[] { 18, -32, 47, -54, 58, 62, -71 }, byAbs);
         }
-        
+
         private partial class Person
         {
             public string Ssn { get; set; }

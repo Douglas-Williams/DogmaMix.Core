@@ -42,7 +42,7 @@ namespace DogmaMix.Core.Disposables
         /// </summary>
         /// <remarks>
         /// This strategy is presented by Marc Gravell in
-        /// <see href="http://blog.marcgravell.com/2008/11/dontdontuse-using.html">don't(don't(use using))</see>.
+        /// <see href="https://blog.marcgravell.com/2008/11/dontdontuse-using.html">don't(don't(use using))</see>.
         /// </remarks>
         Swallow,
 
@@ -52,7 +52,7 @@ namespace DogmaMix.Core.Disposables
         /// </summary>
         /// <remarks>
         /// This strategy is suggested in the first example of the Stack Overflow question
-        /// <see href="http://stackoverflow.com/q/1654487/1149773">Swallowing exception thrown in catch/finally block</see>.
+        /// <see href="https://stackoverflow.com/q/1654487/1149773">Swallowing exception thrown in catch/finally block</see>.
         /// </remarks>
         Subjugate,
 

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using DogmaMix.Core.Disposables;
@@ -58,13 +56,13 @@ namespace DogmaMix.Core.Extensions
         /// <para>
         /// However, this guideline is broken repeatedly throughout the .NET Framework, including in the <see cref="FileStream"/> class,
         /// which can throw <see cref="IOException"/> whilst flushing its buffered data to the underlying device,
-        /// and notoriously from the <see cref="ClientBase{TChannel}"/> base class for WCF clients, 
+        /// and notoriously from the <see href="https://docs.microsoft.com/en-us/dotnet/api/system.servicemodel.clientbase-1">ClientBase&lt;TChannel&gt;</see> base class for WCF clients, 
         /// which recommends ditching the <see langword="using"/> keyword to avoid this issue 
-        /// in <see href="https://msdn.microsoft.com/en-us/library/aa355056(v=vs.110).aspx">Avoiding Problems with the Using Statement</see>.
+        /// in <see href="https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/use-close-abort-release-wcf-client-resources">Close and Abort release resources safely when network connections have dropped</see>.
         /// </para>
         /// <para>
         /// The problematic implications of such exception swallowing are discussed 
-        /// in this <see href="http://stackoverflow.com/q/577607/1149773">Stack Overflow question</see>:
+        /// in this <see href="https://stackoverflow.com/q/577607/1149773">Stack Overflow question</see>:
         /// </para>
         /// <blockquote>
         /// <list type="number">
@@ -84,11 +82,10 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/577607/1149773">Should you implement IDisposable.Dispose() so that it never throws?</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/35602760/1149773">Delegate-parameterized method vs IDisposable implementation"</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/1654487/1149773">Swallowing exception thrown in catch/finally block"</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx">Dispose Pattern</see>, <i>MSDN Library</i></item>
-        /// <item><see href="https://msdn.microsoft.com/en-us/library/fs2xkftw(v=vs.110).aspx">Implementing a Dispose Method</see>, <i>MSDN Library</i></item>
+        /// <item><see href="https://stackoverflow.com/q/577607/1149773">Should you implement IDisposable.Dispose() so that it never throws?</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/35602760/1149773">Delegate-parameterized method vs IDisposable implementation"</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/1654487/1149773">Swallowing exception thrown in catch/finally block"</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose">Implementing a Dispose Method</see>, <i>MSDN Library</i></item>
         /// </list>
         /// </remarks>
         /// <example>

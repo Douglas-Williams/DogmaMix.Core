@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -233,6 +235,57 @@ namespace DogmaMix.Core.Comparers.Tests
                 EnumerableAssert.AreEqual(
                     new[] { a, b, c, d, f, e, g, h, j, i, k, l, m },
                     source.OrderBy(s => s, SequenceComparer.Create(SequenceComparison.Shortlex, StringComparer.Ordinal)));
+            }
+        }
+
+        [TestMethod]
+        public void Compare_Utf8String()
+        {
+            Assert.AreEqual(0, new Utf8String("").CompareTo(new Utf8String("")));
+            Assert.AreEqual(0, new Utf8String("abc").CompareTo(new Utf8String("abc")));
+            Assert.AreEqual(-1, Math.Sign(new Utf8String("abc").CompareTo(new Utf8String("abd"))));
+            Assert.AreEqual(1, Math.Sign(new Utf8String("abd").CompareTo(new Utf8String("abc"))));
+            Assert.AreEqual(-1, Math.Sign(new Utf8String("abc").CompareTo(new Utf8String("abcd"))));
+            Assert.AreEqual(1, Math.Sign(new Utf8String("abcd").CompareTo(new Utf8String("abc"))));
+        }
+
+        [TestMethod]
+        public void Serialize_BinaryFormatter()
+        {
+            var x = new[] { "abc", "def" };
+            var y = new[] { "abc", "DEF" };
+            var z = new[] { "xyz" };
+
+            var binaryFormatter = new BinaryFormatter();
+            using (var stream = new MemoryStream())
+            {
+                var original = SequenceComparer.Create(SequenceComparison.Shortlex, StringComparer.OrdinalIgnoreCase);
+                binaryFormatter.Serialize(stream, original);
+                stream.Position = 0;
+
+                var comparer = (SequenceComparer<string>)binaryFormatter.Deserialize(stream);
+                CompareAssert.IsEqualTo(x, y, comparer);
+                CompareAssert.IsGreaterThan(x, z, comparer);
+            }
+        }
+
+        private struct Utf8String : IComparable<Utf8String>
+        {
+            private readonly byte[] _data;
+
+            public Utf8String(string source)
+            {
+                _data = Encoding.UTF8.GetBytes(source);
+            }
+
+            public override string ToString()
+            {
+                return Encoding.UTF8.GetString(_data);
+            }
+
+            public int CompareTo(Utf8String other)
+            {
+                return SequenceComparer<byte>.Lexicographical.Compare(_data, other._data);
             }
         }
     }

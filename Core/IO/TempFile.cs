@@ -66,9 +66,9 @@ namespace DogmaMix.Core.IO
     /// </para>
     /// <list type="bullet">
     /// <listheader>References</listheader>
-    /// <item><see href="http://stackoverflow.com/q/400140/1149773">How do I automatically delete tempfiles in c#?</see>, <i>Stack Overflow</i></item>
-    /// <item><see href="http://stackoverflow.com/q/1519429/1149773">Handling with temporary file stream</see>, <i>Stack Overflow</i></item>
-    /// <item><see href="http://stackoverflow.com/q/35602760/1149773">Delegate-parameterized method vs IDisposable implementation for temporary file operation</see>, <i>Stack Overflow</i></item>
+    /// <item><see href="https://stackoverflow.com/q/400140/1149773">How do I automatically delete tempfiles in c#?</see>, <i>Stack Overflow</i></item>
+    /// <item><see href="https://stackoverflow.com/q/1519429/1149773">Handling with temporary file stream</see>, <i>Stack Overflow</i></item>
+    /// <item><see href="https://stackoverflow.com/q/35602760/1149773">Delegate-parameterized method vs IDisposable implementation for temporary file operation</see>, <i>Stack Overflow</i></item>
     /// </list>
     /// </remarks>
     public class TempFile : Disposable
@@ -107,7 +107,8 @@ namespace DogmaMix.Core.IO
         /// Deletes the temporary file, it if exists.
         /// </summary>
         /// <param name="disposing">
-        /// <see langword="true"/>, since the method call always comes from the <see cref="Dispose"/> method.
+        /// <see langword="true"/>, since the method call always comes from 
+        /// the <see cref="Disposable.Dispose()"/> method.
         /// </param>
         protected override void Dispose(bool disposing)
         {

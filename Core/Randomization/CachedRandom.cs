@@ -37,7 +37,7 @@ namespace DogmaMix.Core.Randomization
         /// The instance must not be used by any thread other than the one on which it was retrieved.
         /// </para>
         /// <para>
-        /// This implementation is adapted from the <see href="http://csharpindepth.com/Articles/Chapter12/Random.aspx">Random numbers</see> article
+        /// This implementation is adapted from the <see href="https://csharpindepth.com/Articles/Random">Random numbers</see> article
         /// in <i>C# in Depth</i> by Jon Skeet. 
         /// It has been improved to take a modulus of the <see cref="Environment.TickCount"/> value, reducing the risk of overflow if it is close 
         /// to <see cref="int.MaxValue"/>, which is reached when the system has been running continuously for approximately 24.9 days.
@@ -46,7 +46,7 @@ namespace DogmaMix.Core.Randomization
         /// result for pairs of seeds corresponding to <see cref="int.MaxValue"/> - <i>i</i> and <see cref="int.MinValue"/> + <i>i</i> + 1.
         /// This implementation also substitutes <see cref="ThreadStaticAttribute"/> for <see cref="ThreadLocal{T}"/>, 
         /// since the former can have better performance; see the Stack Overflow answer for 
-        /// <see href="http://stackoverflow.com/a/7635342/1149773">ThreadStatic vs. ThreadLocal&lt;T&gt; Performance: speedups or alternatives?</see>
+        /// <see href="https://stackoverflow.com/a/7635342/1149773">ThreadStatic vs. ThreadLocal&lt;T&gt; Performance: speedups or alternatives?</see>
         /// </para>
         /// </remarks>
         public static Random Current

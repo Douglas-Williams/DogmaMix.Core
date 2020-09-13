@@ -21,14 +21,20 @@ namespace DogmaMix.Core.Extensions
         /// <param name="value">The string to seek.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies the rules for the search.</param>
         /// <returns>
-        /// <see langword="true"/> if the <paramref name="value"/> parameter occurs within the <paramref name="source"/> string, 
+        /// <see langword="true"/> if the <paramref name="value"/> parameter occurs
+        /// within the <paramref name="source"/> string, 
         /// or if <paramref name="value"/> is the empty string (<c>""</c>);
         /// otherwise, <see langword="false"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="value"/> is <see langword="null"/>.</exception>
-        /// <exception cref="ArgumentException"><paramref name="comparisonType"/> is not a valid <see cref="StringComparison"/> value.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="source"/> or <paramref name="value"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="comparisonType"/> is not a valid <see cref="StringComparison"/> value.
+        /// </exception>
         /// <remarks>
-        /// The built-in <see cref="string.Contains(string)"/> method performs an ordinal (case-sensitive and culture-insensitive) comparison.
+        /// The built-in <see cref="string.Contains(string)"/> method performs an ordinal
+        /// (case-sensitive and culture-insensitive) comparison.
         /// This extension method allows the comparison type to be specified.
         /// </remarks>
         public static bool Contains(this string source, string value, StringComparison comparisonType)
@@ -44,78 +50,94 @@ namespace DogmaMix.Core.Extensions
         /// Reports the zero-based index and length of the first occurrence of the specified substring in the source string.
         /// </summary>
         /// <param name="source">The source string in which to search.</param>
-        /// <param name="substring">The substring to seek.</param>
+        /// <param name="searchValue">The substring to seek.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies the rules for the search.</param>
         /// <param name="matchIndex">
         /// When this method returns, contains the zero-based starting character position of the match, if found;
         /// or -1 if no match is found.
-        /// If <paramref name="substring"/> is the empty string (<c>""</c>), the value will be 0.
+        /// If <paramref name="searchValue"/> is the empty string (<c>""</c>), the value will be 0.
         /// </param>
         /// <param name="matchLength">
         /// When this method returns, contains the length (in characters) of the match, if found; 
         /// or -1 if no match is found.
-        /// If <paramref name="substring"/> is the empty string (<c>""</c>), the value will be 0.
+        /// If <paramref name="searchValue"/> is the empty string (<c>""</c>), the value will be 0.
         /// </param>
+        /// <returns>
+        /// <see langword="true"/> if a match for <paramref name="searchValue"/> is found in the source string;
+        /// otherwise, <see langword="false"/>.
+        /// </returns>
         /// <remarks>
-        /// Refer to the remarks on the <see cref="Find(string, string, int, int, StringComparison, out int, out int)"/> overload.
+        /// Refer to the remarks on the 
+        /// <see cref="Find(string, string, int, int, StringComparison, out int, out int)"/> overload.
         /// </remarks>
-        public static void Find(this string source, string substring, StringComparison comparisonType, out int matchIndex, out int matchLength)
+        public static bool Find(this string source, string searchValue, StringComparison comparisonType, out int matchIndex, out int matchLength)
         {
             ArgumentValidate.NotNull(source, nameof(source));
-            ArgumentValidate.NotNull(substring, nameof(substring));
+            ArgumentValidate.NotNull(searchValue, nameof(searchValue));
             ArgumentValidate.EnumDefined(comparisonType, nameof(comparisonType));
 
-            FindInner(source, substring, 0, source.Length, comparisonType, out matchIndex, out matchLength);
+            return FindInner(source, searchValue, 0, source.Length, comparisonType, out matchIndex, out matchLength);
         }
 
         /// <summary>
         /// Reports the zero-based index and length of the first occurrence of the specified substring in the source string.
         /// </summary>
         /// <param name="source">The source string in which to search.</param>
-        /// <param name="substring">The substring to seek.</param>
+        /// <param name="searchValue">The substring to seek.</param>
         /// <param name="searchIndex">The zero-based starting character position in <paramref name="source"/> to search from.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies the rules for the search.</param>
         /// <param name="matchIndex">
         /// When this method returns, contains the zero-based starting character position of the match, if found;
         /// or -1 if no match is found.
-        /// If <paramref name="substring"/> is the empty string (<c>""</c>), the value will be <paramref name="searchIndex"/>.
+        /// If <paramref name="searchValue"/> is the empty string (<c>""</c>), 
+        /// the value will be <paramref name="searchIndex"/>.
         /// </param>
         /// <param name="matchLength">
         /// When this method returns, contains the length (in characters) of the match, if found; 
         /// or -1 if no match is found.
-        /// If <paramref name="substring"/> is the empty string (<c>""</c>), the value will be 0.
+        /// If <paramref name="searchValue"/> is the empty string (<c>""</c>), the value will be 0.
         /// </param>
+        /// <returns>
+        /// <see langword="true"/> if a match for <paramref name="searchValue"/> is found in the source string;
+        /// otherwise, <see langword="false"/>.
+        /// </returns>
         /// <remarks>
-        /// Refer to the remarks on the <see cref="Find(string, string, int, int, StringComparison, out int, out int)"/> overload.
+        /// Refer to the remarks on the 
+        /// <see cref="Find(string, string, int, int, StringComparison, out int, out int)"/> overload.
         /// </remarks>
-        public static void Find(this string source, string substring, int searchIndex, StringComparison comparisonType, out int matchIndex, out int matchLength)
+        public static bool Find(this string source, string searchValue, int searchIndex, StringComparison comparisonType, out int matchIndex, out int matchLength)
         {
             ArgumentValidate.NotNull(source, nameof(source));
-            ArgumentValidate.NotNull(substring, nameof(substring));
+            ArgumentValidate.NotNull(searchValue, nameof(searchValue));
             ArgumentValidate.StringIndex(source, nameof(source), searchIndex, nameof(searchIndex));
             ArgumentValidate.EnumDefined(comparisonType, nameof(comparisonType));
 
-            FindInner(source, substring, searchIndex, source.Length - searchIndex, comparisonType, out matchIndex, out matchLength);
+            return FindInner(source, searchValue, searchIndex, source.Length - searchIndex, comparisonType, out matchIndex, out matchLength);
         }
 
         /// <summary>
         /// Reports the zero-based index and length of the first occurrence of the specified substring in the source string.
         /// </summary>
         /// <param name="source">The source string in which to search.</param>
-        /// <param name="substring">The substring to seek.</param>
+        /// <param name="searchValue">The substring to seek.</param>
         /// <param name="searchIndex">The zero-based starting character position in <paramref name="source"/> to search from.</param>
         /// <param name="searchLength">The number of character positions in <paramref name="source"/> to search through.</param>
         /// <param name="comparisonType">One of the enumeration values that specifies the rules for the search.</param>
         /// <param name="matchIndex">
         /// When this method returns, contains the zero-based starting character position of the match, if found;
         /// or -1 if no match is found.
-        /// If <paramref name="substring"/> is the empty string (<c>""</c>), the value will be <paramref name="searchIndex"/>.
+        /// If <paramref name="searchValue"/> is the empty string (<c>""</c>), 
+        /// the value will be <paramref name="searchIndex"/>.
         /// </param>
         /// <param name="matchLength">
         /// When this method returns, contains the length (in characters) of the match, if found; 
         /// or -1 if no match is found.
-        /// If <paramref name="substring"/> is the empty string (<c>""</c>), the value will be 0.
+        /// If <paramref name="searchValue"/> is the empty string (<c>""</c>), the value will be 0.
         /// </param>
+        /// <returns>
+        /// <see langword="true"/> if a match for <paramref name="searchValue"/> is found in the source string;
+        /// otherwise, <see langword="false"/>.
+        /// </returns>
         /// <remarks>
         /// <para>
         /// This method builds upon the <see cref="string.IndexOf(string, int, int, StringComparison)"/> method
@@ -123,12 +145,15 @@ namespace DogmaMix.Core.Extensions
         /// allowing string manipulation operations to subsequently be performed correctly.
         /// </para>
         /// <para>
-        /// Culture-sensitive comparisons can result in a match that has a different length from the specified <paramref name="substring"/> parameter. 
+        /// Culture-sensitive comparisons can result in a match that has a different length
+        /// than the specified <paramref name="searchValue"/> argument. 
         /// For example, under the en-US culture, <c>"æ"</c> and <c>"ae"</c> are considered equal. 
         /// <c>"Encyclopædia".IndexOf("aedia")</c> evaluates to 8, indicating a match.
-        /// However, the length of the matched substring, <c>"ædia"</c>, is 4, whilst the length of the searched-for parameter, <c>"aedia"</c>, is 5.
-        /// This can lead to subtle bugs. Consider the following code for removing the first occurrence of substring from a string, 
-        /// taken from a <see href="http://stackoverflow.com/a/2201648/1149773">highly-upvoted answer</see> on Stack Overflow:
+        /// However, the length of the matched substring, <c>"ædia"</c>, is 4,
+        /// whilst the length of the searched-for parameter, <c>"aedia"</c>, is 5.
+        /// This can lead to subtle bugs. 
+        /// Consider the following code for removing the first occurrence of substring from a string, 
+        /// taken from a <see href="https://stackoverflow.com/a/2201648/1149773">highly-upvoted answer</see> on Stack Overflow:
         /// <code>
         /// int index = sourceString.IndexOf(removeString);
         /// string cleanPath = index &lt; 0 ? sourceString : sourceString.Remove(index, removeString.Length);
@@ -146,14 +171,14 @@ namespace DogmaMix.Core.Extensions
         /// There is no public functionality provided in the .NET Framework Class Library that performs such substring searches.
         /// The current method first calls <see cref="string.IndexOf(string, int, int, StringComparison)"/> to get the
         /// starting position of the match, then iteratively attempts to identify its length.
-        /// It begins with the most likely case (hot path) of the match having the same length as <paramref name="substring"/>,
-        /// verifying this through a call to <see cref="SubstringCompare.Compare(string, int, int, string, int, int, StringComparison)"/>.
+        /// It begins with the most likely case (hot path) of the match having the same length as <paramref name="searchValue"/>,
+        /// verifying this through a call to <see cref="Substring.Compare(string, int, int, string, int, int, StringComparison)"/>.
         /// If not equal, it would attempt to decrement and increment the length of the match by one character each time,
         /// calling the aforementioned method until equality is confirmed.
         /// </para>
         /// <para>
         /// The approach of iterating over the substring's length is endorsed by 
-        /// <see href="http://stackoverflow.com/questions/15980310/how-can-i-perform-a-culture-sensitive-starts-with-operation-from-the-middle-of/16001302?noredirect=1#comment22956089_16062528">usr</see>:
+        /// <see href="https://stackoverflow.com/q/15980310/1149773#comment22956089_16062528">usr</see>:
         /// </para>
         /// <blockquote>
         /// I have solved a similar problem once like this (search-string highlighting in HTML). I did it similarly. 
@@ -162,22 +187,24 @@ namespace DogmaMix.Core.Extensions
         /// </blockquote>
         /// <para>
         /// An alternative to this approach sacrifices portability for performance by executing a P/Invoke call to the
-        /// <see href="https://msdn.microsoft.com/en-us/library/dd318056%28v=vs.85%29.aspx"><c>FindNLSString</c></see> function
+        /// <see href="https://docs.microsoft.com/en-us/windows/desktop/api/winnls/nf-winnls-findnlsstring"><c>FindNLSString</c></see> function
         /// (or related), as is done internally within the <see cref="string"/> class implementation.
-        /// This approach is described under <see href="http://stackoverflow.com/a/20484094/1149773">this Stack Overflow answer</see>.
+        /// This approach is described under <see href="https://stackoverflow.com/a/20484094/1149773">this Stack Overflow answer</see>.
         /// </para>
         /// <para>
         /// Another alternative approach involves subjecting the strings to Unicode normalization 
         /// (through the <see cref="string.Normalize(NormalizationForm)"/> method) before comparison,
-        /// as suggested in <see href="http://stackoverflow.com/a/16001302/1149773">this Stack Overflow answer</see>.
+        /// as suggested in <see href="https://stackoverflow.com/a/16001302/1149773">this Stack Overflow answer</see>.
         /// However, this approach is undesirable since the returned results would only apply to the <i>normalized</i> forms
-        /// of <paramref name="source"/> and <paramref name="substring"/>, requiring the original strings to be discarded 
+        /// of <paramref name="source"/> and <paramref name="searchValue"/>, requiring the original strings to be discarded 
         /// and replaced by their normalized forms for all subsequent processing and storage.
         /// </para>
         /// <para>
-        /// Furthermore, Unicode normalization would not always yield results consistent with <see cref="string.Compare(string, string)"/>
-        /// or <see cref="string.Equals(string, string, StringComparison)"/> under <see cref="StringComparison.CurrentCulture"/>.
-        /// As discussed under <see href="http://unicode.org/reports/tr15/">Unicode Normalization Forms</see>,
+        /// Furthermore, Unicode normalization would not always yield results consistent with 
+        /// culture-sensitive comparisons in .NET (such as <see cref="string.Compare(string, string)"/>
+        /// or <see cref="string.Equals(string, string, StringComparison)"/> 
+        /// with <see cref="StringComparison.CurrentCulture"/>).
+        /// As mentioned in the <see href="https://unicode.org/reports/tr15/">Unicode Normalization Forms</see> annex,
         /// <see cref="NormalizationForm.FormC"/> and <see cref="NormalizationForm.FormD"/> only support <i>canonical</i> mappings, 
         /// such as between precomposed characters and combining character sequences – for example, <c>"é"</c> and <c>"e\u0301"</c>.
         /// However, the said forms do not perform <i>compatibility</i> mappings, as is required for ligatures.
@@ -185,61 +212,66 @@ namespace DogmaMix.Core.Extensions
         /// the said ligatures are considered to be equal to their corresponding character sequences under the en-US culture.
         /// <see cref="NormalizationForm.FormKC"/> and <see cref="NormalizationForm.FormKD"/> handle compatibility mappings,
         /// and can decompose some ligatures, such as <c>"ﬃ"</c>, but miss others, such as <c>"æ"</c>.
-        /// (A <see href="http://stackoverflow.com/a/15485970/1149773">Stack Overflow answer</see> mentions that
+        /// (A <see href="https://stackoverflow.com/a/15485970/1149773">Stack Overflow answer</see> mentions that
         /// “Unicode 6.2 doesn't appear to contain a normative mapping from Æ to AE.”)
         /// The issue is made worse by the discrepancies between cultures – <c>"æ"</c> is equal to <c>"ae"</c> under en-US, 
         /// but not under da-DK, as discussed under the MSDN documentation for 
-        /// <see href="https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx#comparison">string comparison</see>.
+        /// <see href="https://docs.microsoft.com/en-us/dotnet/api/system.string?view=netframework-4.7#comparison">string comparison</see>.
         /// Thus, normalization (to any form) would not give results that are consistent with <see cref="StringComparison.CurrentCulture"/> comparisons.
         /// </para>
         /// <para>
         /// Yet another alternative involves iterating over the strings as a sequence of <i>text elements</i>, 
         /// rather than UTF-16 code units, using the <see cref="StringInfo.GetNextTextElement(string, int)"/> method,
-        /// as presented in <see href="http://stackoverflow.com/a/22513015/1149773">this Stack Overflow answer</see>.
+        /// as presented in <see href="https://stackoverflow.com/a/22513015/1149773">this Stack Overflow answer</see>.
         /// Results would be similar to those obtained from Unicode normalization: canonical mappings are honored,
         /// but compatibility mappings are not.
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/35485677/1149773">Get substring from string using culture-sensitive comparison</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/20480016/1149773">Length of substring matched by culture-sensitive String.IndexOf method</see>, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/15980310/1149773">How can I perform a culture-sensitive “starts-with” operation from the middle of a string?</see> by Jon Skeet, <i>Stack Overflow</i></item>
-        /// <item><see href="http://stackoverflow.com/q/9376621/1149773">Folding/Normalizing Ligatures (e.g. Æ to ae) Using (Core)Foundation</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/35485677/1149773">Get substring from string using culture-sensitive comparison</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/20480016/1149773">Length of substring matched by culture-sensitive String.IndexOf method</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/15980310/1149773">How can I perform a culture-sensitive “starts-with” operation from the middle of a string?</see> by Jon Skeet, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/9376621/1149773">Folding/Normalizing Ligatures (e.g. Æ to ae) Using (Core)Foundation</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
-        public static void Find(this string source, string substring, int searchIndex, int searchLength, StringComparison comparisonType, out int matchIndex, out int matchLength)
+        public static bool Find(this string source, string searchValue, int searchIndex, int searchLength, StringComparison comparisonType, out int matchIndex, out int matchLength)
         {
             ArgumentValidate.NotNull(source, nameof(source));
-            ArgumentValidate.NotNull(substring, nameof(substring));
+            ArgumentValidate.NotNull(searchValue, nameof(searchValue));
             ArgumentValidate.StringIndexLength(source, nameof(source), searchIndex, nameof(searchIndex), searchLength, nameof(searchLength));
             ArgumentValidate.EnumDefined(comparisonType, nameof(comparisonType));
 
-            FindInner(source, substring, searchIndex, searchLength, comparisonType, out matchIndex, out matchLength);
+            return FindInner(source, searchValue, searchIndex, searchLength, comparisonType, out matchIndex, out matchLength);
         }
 
-        private static void FindInner(this string source, string substring, int searchIndex, int searchLength, StringComparison comparisonType, out int matchIndex, out int matchLength)
+        private static bool FindInner(string source, string searchValue, int searchIndex, int searchLength, StringComparison comparisonType, out int matchIndex, out int matchLength)
         {
-            matchIndex = source.IndexOf(substring, searchIndex, searchLength, comparisonType);
+            matchIndex = source.IndexOf(searchValue, searchIndex, searchLength, comparisonType);
             if (matchIndex == -1)
             {
                 matchLength = -1;
-                return;
+                return false;
             }
 
-            matchLength = FindMatchLength(source, substring, searchIndex, searchLength, comparisonType, matchIndex);
-            
+            matchLength = FindMatchLength(source, searchValue, searchIndex, searchLength, comparisonType, matchIndex);
+
             // Defensive programming, but should never happen
             if (matchLength == -1)
+            {
                 matchIndex = -1;
+                return false;
+            }
+
+            return true;
         }
 
-        private static int FindMatchLength(string source, string substring, int searchIndex, int searchLength, StringComparison comparisonType, int matchIndex)
+        private static int FindMatchLength(string source, string searchValue, int searchIndex, int searchLength, StringComparison comparisonType, int matchIndex)
         {
             int matchLengthMaximum = searchLength - (matchIndex - searchIndex);
-            int matchLengthInitial = Math.Min(substring.Length, matchLengthMaximum);
+            int matchLengthInitial = Math.Min(searchValue.Length, matchLengthMaximum);
 
-            // Hot path: match length is same as specified substring length
-            if (SubstringCompare.CompareInner(source, matchIndex, matchLengthInitial, substring, 0, substring.Length, comparisonType) == 0)
+            // Hot path: match length is same as specified search string
+            if (Substring.CompareInner(source, matchIndex, matchLengthInitial, searchValue, 0, searchValue.Length, comparisonType) == 0)
                 return matchLengthInitial;
 
             int matchLengthDecrementing = matchLengthInitial - 1;
@@ -249,7 +281,7 @@ namespace DogmaMix.Core.Extensions
             {
                 if (matchLengthDecrementing >= 0)
                 {
-                    if (SubstringCompare.CompareInner(source, matchIndex, matchLengthDecrementing, substring, 0, substring.Length, comparisonType) == 0)
+                    if (Substring.CompareInner(source, matchIndex, matchLengthDecrementing, searchValue, 0, searchValue.Length, comparisonType) == 0)
                         return matchLengthDecrementing;
 
                     matchLengthDecrementing--;
@@ -257,7 +289,7 @@ namespace DogmaMix.Core.Extensions
 
                 if (matchLengthIncrementing <= matchLengthMaximum)
                 {
-                    if (SubstringCompare.CompareInner(source, matchIndex, matchLengthIncrementing, substring, 0, substring.Length, comparisonType) == 0)
+                    if (Substring.CompareInner(source, matchIndex, matchLengthIncrementing, searchValue, 0, searchValue.Length, comparisonType) == 0)
                         return matchLengthIncrementing;
 
                     matchLengthIncrementing++;
@@ -267,7 +299,7 @@ namespace DogmaMix.Core.Extensions
             // Should never happen
             return -1;
         }
-
+        
         /// <summary>
         /// Removes the specified prefix from the beginning of the source string.
         /// </summary>
@@ -332,7 +364,7 @@ namespace DogmaMix.Core.Extensions
         /// </para>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/a/4101583/1149773">C# removing strings from end of string</see> (answer), <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/a/4101583/1149773">C# removing strings from end of string</see> (answer), <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         public static string RemoveSuffix(this string source, string suffix, StringComparison comparisonType = StringComparison.CurrentCulture)

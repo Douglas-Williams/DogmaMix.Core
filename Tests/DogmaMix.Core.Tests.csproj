@@ -1,156 +1,59 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E7E5876B-221A-4F8A-8E5F-16CA1C0C83D5}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DogmaMix.Core.Tests</RootNamespace>
-    <AssemblyName>DogmaMix.Core.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
-    <IsCodedUITest>False</IsCodedUITest>
-    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <RepositoryUrl>https://github.com/Douglas-Williams/DogmaMix.Core</RepositoryUrl>
+
+    <Version>2.0.0</Version>
+
+    <Authors>Douglas Williams</Authors>
+
+    <Company>DogmaMix</Company>
+
+    <Product>DogmaMix.Core</Product>
+
+    <Description>Unit tests and integration tests for the DogmaMix.Core projects</Description>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
   </ItemGroup>
-  <Choose>
-    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
+
   <ItemGroup>
-    <Compile Include="Collections\EnumerableUtilityTests.cs" />
-    <Compile Include="Collections\EnumeratorUtilityTests.cs" />
-    <Compile Include="Comparers\EqualityComparerBaseTests.cs" />
-    <Compile Include="Comparers\ComparerBaseTests.cs" />
-    <Compile Include="Comparers\ReferenceEqualityComparerTests.cs" />
-    <Compile Include="Delegates\AsyncFuncExtensionsTests.cs" />
-    <Compile Include="Delegates\AsyncActionExtensionsTests.cs" />
-    <Compile Include="Delegates\FuncExtensionsTests.cs" />
-    <Compile Include="Validation\ArgumentValidateTests.cs" />
-    <Compile Include="Disposables\DisposableExtensionsTests.cs" />
-    <Compile Include="Types\EnumUtilityTests.cs" />
-    <Compile Include="Disposables\FinalizableDisposableTests.cs" />
-    <Compile Include="Disposables\DisposableTests.cs" />
-    <Compile Include="Globalization\PredefinedCultureTests.cs" />
-    <Compile Include="Randomization\RandomExtensionsTests.cs" />
-    <Compile Include="Disposables\DisposableExtensionsTests.Auto.cs">
-      <DependentUpon>DisposableExtensionsTests.Auto.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="IO\FileOperationTests.cs" />
-    <Compile Include="IO\TempFileTests.cs" />
-    <Compile Include="IO\StreamExtensionsTests.Auto.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StreamExtensionsTests.Auto.tt</DependentUpon>
-    </Compile>
-    <Compile Include="IO\StreamExtensionsTests.cs" />
-    <Compile Include="Collections\EnumerableExtensionsTests.cs" />
-    <Compile Include="Strings\HexadecimalConvertTests.cs" />
-    <Compile Include="Comparers\SequenceEqualityComparerTests.cs" />
-    <Compile Include="Comparers\KeyEqualityComparerTests.cs" />
-    <Compile Include="Comparers\SequenceComparerTests.cs" />
-    <Compile Include="Comparers\KeyComparerTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Globalization\CultureSwapperTests.cs" />
-    <Compile Include="Delegates\ActionExtensionsTests.cs" />
-    <Compile Include="Comparers\HashCodeCombinerTests.cs" />
-    <Compile Include="Randomization\CachedRandomTests.cs" />
-    <Compile Include="Threading.Tasks\TaskExtensionsTests.cs" />
-    <Compile Include="Threading\ThreadFactoryTests.cs" />
-    <Compile Include="UnitTesting\EqualityAssertTests.cs" />
-    <Compile Include="UnitTesting\CompareAssertTests.cs" />
-    <Compile Include="UnitTesting\ExceptionAssertTests.cs" />
-    <Compile Include="Strings\StringExtensionsTests.cs" />
-    <Compile Include="Strings\StringCompareTests.cs" />
-    <Compile Include="UnitTesting\EnumerableAssertTests.cs" />
-    <Compile Include="Xml\XmlPreloadedResolverExtensionsTests.cs" />
+    <ProjectReference Include="..\Dependents\DogmaMix.Core.Dependents.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Core\DogmaMix.Core.csproj">
-      <Project>{4F8E8958-A813-4060-BDF4-5D05387D4CBB}</Project>
-      <Name>DogmaMix.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dependents\DogmaMix.Core.Dependents.csproj">
-      <Project>{e190b2cb-54c2-442b-a97e-3da1377dbf0c}</Project>
-      <Name>DogmaMix.Core.Dependents</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Disposables\DisposableExtensionsTests.Auto.tt">
+    <None Update="Disposables\DisposableExtensionsTests.Auto.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DisposableExtensionsTests.Auto.cs</LastGenOutput>
-    </Content>
-    <Content Include="IO\StreamExtensionsTests.Auto.tt">
+    </None>
+    <None Update="IO\StreamExtensionsTests.Auto.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StreamExtensionsTests.Auto.cs</LastGenOutput>
-    </Content>
+    </None>
   </ItemGroup>
-  <Choose>
-    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Disposables\DisposableExtensionsTests.Auto.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisposableExtensionsTests.Auto.tt</DependentUpon>
+    </Compile>
+    <Compile Update="IO\StreamExtensionsTests.Auto.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StreamExtensionsTests.Auto.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

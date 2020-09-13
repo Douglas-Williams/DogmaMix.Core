@@ -20,7 +20,7 @@ namespace DogmaMix.Core.IO
         /// <remarks>
         /// <list type="bullet">
         /// <listheader>References</listheader>
-        /// <item><see href="http://stackoverflow.com/q/802541/1149773">Creating an empty file in C#</see>, <i>Stack Overflow</i></item>
+        /// <item><see href="https://stackoverflow.com/q/802541/1149773">Creating an empty file in C#</see>, <i>Stack Overflow</i></item>
         /// </list>
         /// </remarks>
         public static void CreateEmpty(string path)

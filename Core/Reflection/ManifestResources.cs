@@ -32,7 +32,7 @@ namespace DogmaMix.Core
     /// </para>
     /// <list type="bullet">
     /// <listheader>References</listheader>
-    /// <item><see href="http://stackoverflow.com/a/3314213/1149773">How to read embedded resource text file</see> (answer), <i>Stack Overflow</i></item>
+    /// <item><see href="https://stackoverflow.com/a/3314213/1149773">How to read embedded resource text file</see> (answer), <i>Stack Overflow</i></item>
     /// <item><see href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/632d6914-8c90-450e-8ea0-fa60d2c3b6b6/">Manifest name for Embedded resources</see>, <i>MSDN Forums</i></item>
     /// </list>
     /// </remarks>

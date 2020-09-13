@@ -54,9 +54,7 @@ namespace DogmaMix.Core.Extensions
             ArgumentValidate.NotNull(asyncFunc, nameof(asyncFunc));
                         
             return async (<#=ConcatInvokeParameters(func)#>) =>
-            { 
-                return await asyncFunc(<#=ConcatInvokeArguments(func)#>).ConfigureAwait(false);
-            };
+                await asyncFunc(<#=ConcatInvokeArguments(func)#>).ConfigureAwait(false);
         }
 
 <#

@@ -1,11 +1,11 @@
 # DogmaMix.Core
 This project provides additional general-purpose functionality, utility classes,
-and extension methods for the .NET Framework.
+and extension methods for the .NET platform.
 
-* **DogmaMix.Core** builds on the .NET Framework Class Library. 
+* **DogmaMix.Core** builds on the .NET Standard libraries. 
   Its types do not have any dependencies other than the system assemblies.
-* **DogmaMix.Core.Dependents** builds on popular libraries for the .NET Framework,
-  such as the Visual Studio Unit Test Framework. 
+* **DogmaMix.Core.Dependents** builds on popular libraries for the .NET platform,
+  such as the Microsoft Test Framework (MSTest). 
   Its types have dependencies on the said libraries, which also need to be referenced from any consuming projects.
 * **DogmaMix.Core.Tests** contains unit tests and integration tests for the above.
 
